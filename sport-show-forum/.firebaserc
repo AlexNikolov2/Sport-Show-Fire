@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "sport-show-forum": {
+      "hosting": {
+        "sport-show-forum": [
+          "sport-show-forum"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "sport-show-forum"
+  }
+}
