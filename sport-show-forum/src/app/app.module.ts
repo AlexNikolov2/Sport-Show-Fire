@@ -16,6 +16,10 @@ import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { AuthRoutingModule } from './auth/auth-routing.module';
 import { ItemsRoutingModule } from './items/items-routing.module';
+import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
+import { AuthModule } from './auth/auth.module';
+import { ItemsModule } from './items/items.module';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,11 @@ import { ItemsRoutingModule } from './items/items-routing.module';
     provideRemoteConfig(() => getRemoteConfig()),
     provideStorage(() => getStorage()),
     AuthRoutingModule,
-    ItemsRoutingModule
+    ItemsRoutingModule,
+    CoreModule,
+    SharedModule,
+    AuthModule,
+    ItemsModule
   ],
   providers: [
     ScreenTrackingService,UserTrackingService
