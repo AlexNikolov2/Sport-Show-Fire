@@ -27,6 +27,8 @@ export class UserService {
       }
     });
   }
+
+  //login with email/password
   login(email: string, password: string) {
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
@@ -58,9 +60,6 @@ export class UserService {
     return user !== null;
   }
 
-  /* Setting up user data when sign in with username/password, 
-  sign up with username/password and sign in with social auth  
-  provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
   setUserData(user: any) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `Users/${user.uid}`
@@ -74,7 +73,7 @@ export class UserService {
     });
   }
 
-  // Sign out
+  // Get the f*ck out of my wonderful forum!
   logout() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
