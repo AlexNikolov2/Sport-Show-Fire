@@ -1,52 +1,26 @@
+
 <div *ngIf="submitted && (form.invalid)" class="me">
-    <p *ngIf="form.get('username')!.errors?.['required']">Username is required!</p>
-    <p *ngIf="form.get('username')!.errors?.['minlength']">Username must be at least 3 characters!</p>
     <p *ngIf="form.get('email')!.errors?.['required']">Email is required!</p>
     <p *ngIf="form.get('email')!.errors?.['email']">Email is invalid!</p>
     <p *ngIf="form.get('password')!.errors?.['required']">Password is required!</p>
     <p *ngIf="form.get('password')!.errors?.['minlength']">Password must be at least 6 characters!</p>
-    <p *ngIf="form.get('repeatPassword')!.errors?.['required']">Repeat Password is required!</p>
-    <p *ngIf="form.get('repeatPassword')!.errors?.['minlength']">Repeat Password must be at least 6 characters!</p>
-    <p *ngIf="form.get('avatar')!.errors?.['required']">Avatar is required!</p>
-    
 </div>
 
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <h3>Register</h3>
 
-    <div class="main-group">
-        <div class="group-a">
-            <div class="form-username">
-                <label for="username">Username</label>
-                <input formControlName="username" type="text" class="form-control" id="username" aria-describedby="usernameHelp" placeholder="Enter username">
-            </div>
-            <div class="form-email">
-                <label for="email">Email address</label>
-                <input  formControlName="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
-            </div>
-        </div>
-        <div class="group-b">
-            <div class="form-password">
-                <label for="password">Password</label>
-                <input  formControlName="password" type="password" class="form-control" id="password" placeholder="Password">
-            </div>
-            <div class="form-repeatPassword">
-                <label for="repeatPassword">Repeat Password</label>
-                <input  formControlName="repeatPassword" type="password" class="form-control" id="repeatPassword" placeholder="Repeat Password">
-            </div>
-        </div>
-        
-        <div class="form-avatar">
-            <label for="avatar">Avatar</label>
-            <input formControlName="avatar" type="file" class="form-control" id="avatar" placeholder="https://...">
-        </div>
-        <div class="form-description">
-            <label for="description">Description</label>
-            <textarea  formControlName="description" class="form-control" id="description" rows="3"></textarea>
-        </div>
+    <div class="form-email">
+        <label for="email">Email address</label>
+        <input formControlName="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
     </div>
-    
+    <div class="form-password">
+        <label for="password">Password</label>
+        <input formControlName="password" type="password" class="form-control" id="password" placeholder="Password">
+    </div>
     <div class="button-submit">
-        <button type="submit" class="btn btn-primary">Register</button>
+        <button type="submit" class="btn btn-primary">Log In!</button>
+    </div>
+    <div class="login">
+        <p>Wait. You actually have an account? <a routerLink="/login">Log In</a></p>
     </div>
 </form>

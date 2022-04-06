@@ -2,9 +2,7 @@ import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/shared/interface/user';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { browserSessionPersistence, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, setPersistence, signInWithEmailAndPassword, signOut, updateProfile, UserCredential } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
-import { from, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +32,7 @@ export class UserService {
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['/all-posts']);
         });
         this.setUserData(result.user);
       })
@@ -44,11 +42,12 @@ export class UserService {
   }
 
   // Sign up with email/password
-  register(username: string, email: string, password: string, returnPassword: string, avatar: string, description: string) {
+  register(email: string, password: string) {
     return this.afAuth
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
         this.setUserData(result.user);
+
       })
       .catch((error) => {
         window.alert(error.message);
@@ -66,14 +65,11 @@ export class UserService {
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
   setUserData(user: any) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
-      `users/${user.uid}`
+      `Users/${user.uid}`
     );
     const userData: User = {
       uid: user.uid,
       email: user.email,
-      username: user.username,
-      avatar: user.avatar,
-      description: user.description,
     };
     return userRef.set(userData, {
       merge: true,
@@ -84,7 +80,7 @@ export class UserService {
   logout() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['sign-in']);
+      this.router.navigate(['/login']);
     });
   }
 }

@@ -12,16 +12,12 @@ export class RegisterComponent implements OnInit {
   form!: FormGroup;
   submitted: boolean = false;
 
-  constructor(private userService: UserService, private fb: FormBuilder, private router: Router) { }
+  constructor(public userService: UserService, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      repeatPassword: ['', [Validators.required, Validators.minLength(6),]],
-      avatar: ['', [Validators.required]],
-      description: ['']
     });
   }
 
@@ -30,7 +26,7 @@ export class RegisterComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-    this.userService.register(this.form.controls['email'].value, this.form.controls['password'].value, this.form.controls['repeatPassword'].value, this.form.controls['username'].value, this.form.controls['avatar'].value, this.form.controls['description'].value);
+    this.userService.register(this.form.controls['email'].value, this.form.controls['password'].value);
   }
 
 }
