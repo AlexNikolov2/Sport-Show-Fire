@@ -1,19 +1,20 @@
 <div class="profile-wrap">
-    <img src="https://images.immediate.co.uk/production/volatile/sites/7/2021/02/GettyImages-119505258-20a15e9.jpg?quality=90&resize=980,654" alt="porno">
+    <img src='https://www.pngkey.com/png/full/115-1150152_default-profile-picture-avatar-png-green.png' alt="porno">
     <div class="profile-info">
-        <h3>Germaneco</h3>
-        <p>Fen na Djamito</p>
+        <h3>{{user!.email}}</h3>
+        <p>{{user!.description}}</p>
     </div>
-        <div class="posts-wrap">
+    <div *ngIf="posts"></div>
+        <div *ngFor="let post of posts" class="posts-wrap">
             <div class="post">
-                <h3>Post</h3>
+                <h3>{{post.title}}</h3>
                 <div class="post-info">
-                    <p> 50 <img src="https://www.iconpacks.net/icons/2/free-heart-icon-3510-thumb.png"></p>
-                    <p> 69<img src="http://cdn.onlinewebfonts.com/svg/img_420387.png"></p>
+                    <p>{{post.likes!.length}} <img src="https://www.iconpacks.net/icons/2/free-heart-icon-3510-thumb.png"></p>
+                    <p> {{post.comments!.length}}<img src="http://cdn.onlinewebfonts.com/svg/img_420387.png"></p>
                 </div>
             </div>
         </div>
-    <div  class="posts-none">
+    <div *ngIf="posts == null" class="posts-none">
         <h3>No posts yet</h3>
     </div>
     

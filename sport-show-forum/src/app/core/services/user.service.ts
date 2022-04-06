@@ -39,9 +39,11 @@ export class UserService {
   logout(): void {
     const auth = getAuth();
     signOut(auth)
-      .then(() => {
+      .then((data) => {
+        onAuthStateChanged(auth, (user) => {
         this.uid = null;
         this.router.navigate(['/login']);
+      })
       })
       .catch(err => {
         this.displayError(err.message);
