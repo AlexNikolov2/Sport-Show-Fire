@@ -1,107 +1,90 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/shared/interface/user';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { browserSessionPersistence, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, setPersistence, signInWithEmailAndPassword, signOut, updateProfile, UserCredential } from '@angular/fire/auth';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import { from, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  user!: User;
-  uid: any;
+  userData: any;
 
   constructor(
-    public router: Router,
-    public afAuth: AngularFireAuth,
-    private db: AngularFirestore,
     public afs: AngularFirestore,
-  ){
+    public afAuth: AngularFireAuth,
+    public router: Router,
+    public ngZone: NgZone
+  ) {
+    this.afAuth.authState.subscribe((user) => {
+      if (user) {
+        this.userData = user;
+        localStorage.setItem('user', JSON.stringify(this.userData));
+        JSON.parse(localStorage.getItem('user')!);
+      } else {
+        localStorage.setItem('user', 'null');
+        JSON.parse(localStorage.getItem('user')!);
+      }
+    });
   }
-
-  displayError(err: string): void {
-    document.querySelector('.me p')!.innerHTML = err;
-    setTimeout(() => {
-      document.querySelector('.me p')!.innerHTML = '';
-    }, 5000);
-  }
-
-  login(email: string, password: string): void {
-    const auth = getAuth();
-    signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        this.router.navigate(['/']);
-      })
-      .catch(err => {
-        this.displayError(err.message);
-      });
-  }
-
-  logout(): void {
-    const auth = getAuth();
-    signOut(auth)
-      .then((data) => {
-        onAuthStateChanged(auth, (user) => {
-        this.uid = null;
-        this.router.navigate(['/login']);
-      })
-      })
-      .catch(err => {
-        this.displayError(err.message);
-      });
-  }
-
-  register(email: string, password: string, repeatPassword: string, username: string, avatar: string, description: string): void {
-    const auth = getAuth();
-    if(password == repeatPassword) {
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((data) => {
-          this.uid = data.user.uid;
-          this.insertUserData(data);
-          this.router.navigate(['/']);
-        })
-        .catch(err => {
-          this.displayError(err.message);
+  login(email: string, password: string) {
+    return this.afAuth
+      .signInWithEmailAndPassword(email, password)
+      .then((result) => {
+        this.ngZone.run(() => {
+          this.router.navigate(['dashboard']);
         });
-    }
-    /*createUserWithEmailAndPassword(auth ,email, password)
-    .then(data =>{
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-           this.uid = user.uid;
-            this.user = {
-              uid: this.uid,
-              username: username,
-              email: email,
-              avatar: avatar,
-              description: description
-            };
-            updateProfile(user, {
-              displayName: username + '\n' + description,
-              photoURL: avatar
-            })
-           this.router.navigate(['/items/all-posts']);
-        }
+        this.setUserData(result.user);
       })
-    })
-      .catch(err => {
-        this.displayError(err.message);
-      });*/
+      .catch((error) => {
+        window.alert(error.message);
+      });
   }
 
-  isLoggedIn(): boolean {
-    return this.uid != null;;
+  // Sign up with email/password
+  register(username: string, email: string, password: string, returnPassword: string, avatar: string, description: string) {
+    return this.afAuth
+      .createUserWithEmailAndPassword(email, password)
+      .then((result) => {
+        this.setUserData(result.user);
+      })
+      .catch((error) => {
+        window.alert(error.message);
+      });
   }
 
-  insertUserData(data: UserCredential) {
-    return this.db.doc(`Users/${data.user.uid}`).set({
-      username: this.user!.username,
-      email: this.user!.email,
-      avatar: this.user!.avatar,
-      description: this.user!.description,
-      posts: this.user!.posts,
-    })
+  // Returns true when user is looged in and email is verified
+  get isLoggedIn(): boolean {
+    const user = JSON.parse(localStorage.getItem('user')!);
+    return user !== null;
+  }
+
+  /* Setting up user data when sign in with username/password, 
+  sign up with username/password and sign in with social auth  
+  provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
+  setUserData(user: any) {
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
+      `users/${user.uid}`
+    );
+    const userData: User = {
+      uid: user.uid,
+      email: user.email,
+      username: user.username,
+      avatar: user.avatar,
+      description: user.description,
+    };
+    return userRef.set(userData, {
+      merge: true,
+    });
+  }
+
+  // Sign out
+  logout() {
+    return this.afAuth.signOut().then(() => {
+      localStorage.removeItem('user');
+      this.router.navigate(['sign-in']);
+    });
   }
 }
