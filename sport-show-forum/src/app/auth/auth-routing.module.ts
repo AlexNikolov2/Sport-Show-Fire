@@ -17,7 +17,7 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   exports: [
-    RouterModule
+    RouterModule,
   ]
 })
 export class ItemsRoutingModule { }

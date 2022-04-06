@@ -20,6 +20,9 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 import { ItemsModule } from './items/items.module';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,10 @@ import { ItemsModule } from './items/items.module';
     CoreModule,
     SharedModule,
     AuthModule,
-    ItemsModule
+    ItemsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireDatabaseModule,
   ],
   providers: [
     ScreenTrackingService,UserTrackingService
