@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { PostService } from 'src/app/core/services/post.service';
 import { UserService } from 'src/app/core/services/user.service';
 import { Post } from 'src/app/shared/interface/post';
@@ -10,12 +12,18 @@ import { User } from 'src/app/shared/interface/user';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  user: User | null | undefined;
-  posts: Post[] = [];
+  email?: string | null;
+  posts?: {title: string, content: string, user: string}[];
 
-  constructor(public userService: UserService, public postService: PostService) { }
+  constructor(public auth: AngularFireAuth, public firestore: AngularFirestore, public postService: PostService) { }
 
   ngOnInit(): void {
+    this.auth.currentUser.then(user => {
+      this.email = user?.email;
+    });
+    this.postService.getPosts().subscribe(posts => {
+      this.posts = posts;
+    });
   }
 
 }
