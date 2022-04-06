@@ -9,4 +9,6 @@ export class PostService {
 
   constructor(public firestore: Firestore, public router: Router, public route: ActivatedRoute) { }
 
+  
+
 }

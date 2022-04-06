@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-    this.userService.register(this.form.controls['email'].value, this.form.controls['password'].value, this.form.controls['username'].value, this.form.controls['avatar'].value, this.form.controls['description'].value);
+    this.userService.register(this.form.controls['email'].value, this.form.controls['password'].value, this.form.controls['repeatPassword'].value, this.form.controls['username'].value, this.form.controls['avatar'].value, this.form.controls['description'].value);
   }
 
 }
