@@ -26,6 +26,10 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
+    this.submitted = true;
+    if (this.form.invalid) {
+      return;
+    }
     this.userService.register(this.form.controls['email'].value, this.form.controls['password'].value, this.form.controls['username'].value, this.form.controls['avatar'].value, this.form.controls['description'].value);
   }
 

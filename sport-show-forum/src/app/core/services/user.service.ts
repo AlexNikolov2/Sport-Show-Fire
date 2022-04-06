@@ -2,16 +2,16 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/shared/interface/user';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { browserSessionPersistence, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, setPersistence, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   user: User | null | undefined = undefined;
+  uid: any=null;
 
-  get isLoggedIn(): boolean {
-    return !!this.user;
-  }
+  
 
   constructor(
     public router: Router,
@@ -26,7 +26,8 @@ export class UserService {
   }
 
   login(email: string, password: string): void {
-    this.afAuth.signInWithEmailAndPassword(email, password)
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
       .then(() => {
         this.router.navigate(['/']);
       })
@@ -36,8 +37,10 @@ export class UserService {
   }
 
   logout(): void {
-    this.afAuth.signOut()
+    const auth = getAuth();
+    signOut(auth)
       .then(() => {
+        this.uid = null;
         this.router.navigate(['/login']);
       })
       .catch(err => {
@@ -46,20 +49,30 @@ export class UserService {
   }
 
   register(email: string, password: string, username: string, avatar: string, description: string): void {
-    this.afAuth.createUserWithEmailAndPassword(email, password)
-      .then(() => {
-        this.user = {
-          email,
-          password,
-          username,
-          avatar,
-          description
-        };
-        this.router.navigate(['/']);
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth ,email, password)
+    .then(data =>{
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+           this.uid = user.uid;
+            this.user = {
+              uid: this.uid,
+              username: username,
+              email: email,
+              avatar: avatar,
+              description: description
+            };
+           this.router.navigate(['/items/all-posts']);
+        }
       })
+    })
       .catch(err => {
         this.displayError(err.message);
       });
+  }
+
+  isLoggedIn(): boolean {
+    return this.uid != null;;
   }
 
 }

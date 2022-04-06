@@ -7,12 +7,9 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  get isLoggedIn(): boolean {
-    return this.userService.isLoggedIn;
-  }
 
   constructor(
-    private userService: UserService
+    public userService: UserService
   ) { }
 
   ngOnInit(): void {
