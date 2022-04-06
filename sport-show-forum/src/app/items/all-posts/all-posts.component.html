@@ -1,20 +1,20 @@
 <div *ngIf="posts" class="wrap">
-    <div *ngFor="let post of posts" class="posts-wrap">
+    <div *ngFor="let post of posts | async" class="posts-wrap">
         <div class="intro">
             <h2>Recent posts</h2>
         </div>
         <div class="post">
-            <h3>Post</h3>
+            <h3>{{post.title}}</h3>
             <div class="post-info">
-                <p>50 <img src="https://www.iconpacks.net/icons/2/free-heart-icon-3510-thumb.png"></p>
-                <p>70 <img src="http://cdn.onlinewebfonts.com/svg/img_420387.png"></p>
-                <p style="font-style: italic;">6 days ago</p>
+                <p>{{post.likes}} <img src="https://www.iconpacks.net/icons/2/free-heart-icon-3510-thumb.png"></p>
+                <p>{{post.comments}} <img src="http://cdn.onlinewebfonts.com/svg/img_420387.png"></p>
+                <p style="font-style: italic;">{{post.created_at}}</p>
                 <a href="#" id="details">Details</a>
             </div>
         </div>
     </div>
     </div>
-    <div *ngIf="!posts" class="posts-none">
+    <div *ngIf="posts === undefined" class="posts-none">
         <h3>No posts yet</h3>
         <p>Be the first to post!</p>
     </div>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { PostService } from 'src/app/core/services/post.service';
 import { Post } from 'src/app/shared/interface/post';
 
 @Component({
@@ -7,11 +10,15 @@ import { Post } from 'src/app/shared/interface/post';
   styleUrls: ['./all-posts.component.css']
 })
 export class AllPostsComponent implements OnInit {
-  posts: Post[] = [];
+  posts: Observable<any[]> | undefined;
 
-  constructor() { }
+  constructor(public router: Router, public postService: PostService) { }
 
   ngOnInit(): void {
+    this.getPosts();
+  }
+  getPosts() {
+    this.posts = this.postService.getPosts();
   }
 
 }
