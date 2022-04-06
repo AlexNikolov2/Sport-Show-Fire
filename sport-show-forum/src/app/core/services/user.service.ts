@@ -31,9 +31,7 @@ export class UserService {
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
-        this.ngZone.run(() => {
-          this.router.navigate(['/all-posts']);
-        });
+        this.router.navigate(['/all-posts']);
         this.setUserData(result.user);
       })
       .catch((error) => {
