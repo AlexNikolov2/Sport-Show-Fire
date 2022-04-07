@@ -15,11 +15,6 @@ export class AllPostsComponent implements OnInit {
   constructor(public router: Router, public postService: PostService) { }
 
   ngOnInit(): void {
-    this.getPosts();
-  }
-  
-  getPosts() {
-    this.posts = this.postService.getPosts();
   }
 
 }
