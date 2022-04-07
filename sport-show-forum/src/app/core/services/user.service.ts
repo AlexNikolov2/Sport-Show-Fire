@@ -33,8 +33,8 @@ export class UserService {
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
-        this.router.navigate(['/']);
         this.setUserData(result.user);
+        this.router.navigate(['/']);
       })
       .catch((error) => {
         window.alert(error.message);
@@ -47,7 +47,7 @@ export class UserService {
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
         this.setUserData(result.user);
-        this.router.navigate(['/']);
+        this.router.navigate(['/all-posts']);
       })
       .catch((error) => {
         window.alert(error.message);
