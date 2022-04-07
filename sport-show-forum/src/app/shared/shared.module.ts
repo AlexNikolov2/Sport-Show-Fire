@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { TimeDiffPipe } from './pipes/time-diff.pipe';
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { NumShortenPipe } from './pipes/num-shorten.pipe';
-import { CustomValidatorDirective } from './directives/custom-validator.directive';
 
 
 
@@ -12,7 +11,6 @@ import { CustomValidatorDirective } from './directives/custom-validator.directiv
     TimeDiffPipe,
     ShortenPipe,
     NumShortenPipe,
-    CustomValidatorDirective
   ],
   imports: [
     CommonModule
@@ -21,7 +19,6 @@ import { CustomValidatorDirective } from './directives/custom-validator.directiv
     TimeDiffPipe,
     ShortenPipe,
     NumShortenPipe,
-    CustomValidatorDirective
   ]
 })
 export class SharedModule { }
