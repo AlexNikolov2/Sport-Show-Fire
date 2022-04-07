@@ -6,8 +6,8 @@
         <div class="post">
             <h3>{{post.title}}</h3>
             <div class="post-info">
-                <p>{{post.likes}} <img src="https://www.iconpacks.net/icons/2/free-heart-icon-3510-thumb.png"></p>
-                <p>{{post.comments}} <img src="http://cdn.onlinewebfonts.com/svg/img_420387.png"></p>
+                <p>{{post.likes.length}} <img src="https://www.iconpacks.net/icons/2/free-heart-icon-3510-thumb.png"></p>
+                <p>{{post.comments.length}} <img src="http://cdn.onlinewebfonts.com/svg/img_420387.png"></p>
                 <p style="font-style: italic;">{{post.created_at}}</p>
                 <a routerLink="/details/{{post.id}}" id="details">Details</a>
             </div>
