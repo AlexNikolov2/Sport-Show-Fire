@@ -17,6 +17,7 @@ export class AllPostsComponent implements OnInit {
   ngOnInit(): void {
     this.getPosts();
   }
+  
   getPosts() {
     this.posts = this.postService.getPosts();
   }

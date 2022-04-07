@@ -28,7 +28,6 @@ export class CreatePostComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      this.postService.createPost(this.form.value);
       this.form.reset();
     }
     else{

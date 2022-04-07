@@ -4,6 +4,9 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as firebase from 'firebase/compat';
 import { Observable } from 'rxjs';
+import { Post } from 'src/app/shared/interface/post';
+import { User } from 'src/app/shared/interface/user';
+import { UserService } from '../services/user.service';
 
 type postObservable = Observable<any[]>;
 @Injectable({
@@ -11,22 +14,43 @@ type postObservable = Observable<any[]>;
 })
 export class PostService {
   posts?: postObservable;
+  postIds?: string[] = [];
 
-  constructor(public firestore: AngularFirestore, public router: Router, public route: ActivatedRoute, public database: AngularFireDatabase) {
+
+  constructor(public firestore: AngularFirestore, public router: Router, public route: ActivatedRoute, public database: AngularFireDatabase
+    , public userService: UserService) {
    }
 
-  getPosts() {
-    this.posts = this.firestore.collection('Posts').snapshotChanges();
-    return this.posts;
+  
+   getPosts(): postObservable | undefined {
+    this.posts = this.firestore.collection('Posts').valueChanges();
+ 
+     this.firestore.collection('posts').get({}).subscribe(posts => {
+       posts.docs.map(doc => this.postIds?.push(doc.id));
+     });
+     return this.posts;
   }
 
-  getPost(id: string) {
-    return this.firestore.collection('Posts').doc(id).snapshotChanges();
+  getAllPostIds() {
+    return this.postIds;
   }
 
-  createPost(post: {keyword: string, title: string, description: string, image: string, user?: string | null}) {
-    this.firestore.collection('Posts').add(post);
-    this.router.navigate(['all-posts']);
+  getSinglePost(id: string) {
+    return this.firestore.collection('posts').doc<object>(id).get();
+  }
+
+  createPost(keyword: string, title: string, description: string, image: string) {
+    const post: Post = {
+      keyword: keyword,
+      title: title,
+      description: description,
+      image: image,
+      likes: [],
+      comments: [],
+      userId: this.userService.getUserId(),
+    };
+    let postId = this.firestore.createId();
+    this.firestore.collection('Posts').doc(postId).set(post);
   }
 
   update(id: string | undefined, changes: {}) {
@@ -37,9 +61,9 @@ export class PostService {
     }
   }
 
-  delete(id: string) {
-    this.firestore.collection('Posts').doc(id).delete();
-  }
+  delete(id?: string) {
+    this.firestore.collection('Posts').doc(id).delete().then(() => this.router.navigate([`all-posts`]));
+  };
 
   //may be implemented in search functionality if I have some time left.
   getPostByKeyword(keyword: string) {

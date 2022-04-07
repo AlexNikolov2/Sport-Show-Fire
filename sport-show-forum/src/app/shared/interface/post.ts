@@ -5,9 +5,9 @@ export interface Post {
     id?: string;
     keyword?: string;
     title?: string;
-    content?: string;
-    img?: string;
-    user?: User;
+    description?: string;
+    image?: string;
+    userId?: string;
     likes?: string[];
     comments?: Comment[];
     created_at?: string;

@@ -80,4 +80,8 @@ export class UserService {
       this.router.navigate(['/login']);
     });
   }
+
+  getUserId() {
+    return this.userData.uid;
+  }
 }
