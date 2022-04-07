@@ -11,5 +11,4 @@ export interface Post {
     likes?: string[];
     comments?: Comment[];
     created_at?: string;
-    updated_at?: string;
 }

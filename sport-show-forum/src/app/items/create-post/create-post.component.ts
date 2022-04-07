@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PostService } from 'src/app/core/services/post.service';
 
 @Component({
   selector: 'app-create-post',
@@ -7,9 +8,32 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./create-post.component.css']
 })
 export class CreatePostComponent implements OnInit {
-  constructor() { }
+  form!: FormGroup;
+  constructor(private postService: PostService, public fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.postService.getPosts();
+    this.submitForm();
   }
+
+  submitForm() {
+    this.form = this.fb.group({
+      keyword: ['', [Validators.required, Validators.minLength(3)]],
+      title: ['', [Validators.required, Validators.minLength(3)]],
+      image: ['', [Validators.required]],
+      description: ['', [Validators.required, Validators.minLength(3)]],
+    });
+  }
+
+  onSubmit() {
+    if (this.form.valid) {
+      this.postService.createPost(this.form.value);
+      this.form.reset();
+    }
+    else{
+      return;
+    }
+  }
+
 
 }

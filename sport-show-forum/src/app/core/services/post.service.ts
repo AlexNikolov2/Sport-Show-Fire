@@ -10,7 +10,7 @@ type postObservable = Observable<any[]>;
   providedIn: 'root'
 })
 export class PostService {
-  posts?: postObservable
+  posts?: postObservable;
 
   constructor(public firestore: AngularFirestore, public router: Router, public route: ActivatedRoute, public database: AngularFireDatabase) {
    }

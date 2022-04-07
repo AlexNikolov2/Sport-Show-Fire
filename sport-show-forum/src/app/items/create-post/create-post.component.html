@@ -1,6 +1,15 @@
+<div *ngIf="(form.invalid)" class="me">
+    <p *ngIf="form.get('keyword')!.errors?.['required']">Keyword is required!</p>
+    <p *ngIf="form.get('keyword')!.errors?.['minlength']">Keyword must be at least 3 characters!</p>
+    <p *ngIf="form.get('title')!.errors?.['required']">Title is required!</p>
+    <p *ngIf="form.get('title')!.errors?.['minlength']">Title must be at least 3 characters!</p>
+    <p *ngIf="form.get('image')!.errors?.['required']">Image is required!</p>
+    <p *ngIf="form.get('description')!.errors?.['required']">Description is required!</p>
+    <p *ngIf="form.get('description')!.errors?.['minlength']">Description must be at least 3 characters!</p>
+</div>
 
-
-<form>
+<form formGroup="form"
+(ngSubmit)="onSubmit()">
     <h3>Create Post</h3>
 
     <div class="group-a">
