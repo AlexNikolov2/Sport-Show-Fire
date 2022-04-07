@@ -45,7 +45,21 @@ export class PostService {
     return this.firestore.collection('Posts', ref => ref.where('keyword', '==', keyword)).snapshotChanges();
   }
 
+  comment(id: string, comment: {comment: string, user: string}) {
+    this.firestore.collection('Posts').doc(id).collection('Comments').add(comment);
+  }
 
+  getComments(id: string) {
+    return this.firestore.collection('Posts').doc(id).collection('Comments').snapshotChanges();
+  }
+
+  like(id: string, like: {user: string}) {
+    this.firestore.collection('Posts').doc(id).collection('Likes').add(like);
+  }
+
+  getLikes(id: string) {
+    return this.firestore.collection('Posts').doc(id).collection('Likes').snapshotChanges();
+  }
 
 
 }
