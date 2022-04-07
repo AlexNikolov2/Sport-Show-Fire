@@ -21,4 +21,6 @@ export class AllPostsComponent implements OnInit {
     this.posts = this.postService.getPosts();
   }
 
+
+
 }

@@ -16,6 +16,12 @@ import { CustomValidatorDirective } from './directives/custom-validator.directiv
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    TimeDiffPipe,
+    ShortenPipe,
+    NumShortenPipe,
+    CustomValidatorDirective
   ]
 })
 export class SharedModule { }
