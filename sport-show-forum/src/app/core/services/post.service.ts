@@ -53,12 +53,8 @@ export class PostService {
     this.firestore.collection('Posts').doc(postId).set(post);
   }
 
-  update(id: string | undefined, changes: {}) {
-    if (id) {
-      this.firestore.collection('Posts').doc(id).update(changes).then(() => {
-        this.router.navigate([`posts/${id}`]);
-      });
-    }
+ update(post: any, postId: string){
+    this.firestore.collection('Posts').doc(postId).set(post);
   }
 
   delete(id?: string) {
@@ -71,7 +67,7 @@ export class PostService {
   }
 
   comment(id: string, comment: {comment: string, user: string}) {
-    this.firestore.collection('Posts').doc(id).collection('Comments').add(comment);
+    this.firestore.collection('Posts').doc(id).collection('comments').add(comment);
   }
 
   getComments(id: string) {
