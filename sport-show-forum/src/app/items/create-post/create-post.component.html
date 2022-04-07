@@ -8,7 +8,7 @@
     <p *ngIf="form.get('description')!.errors?.['minlength']">Description must be at least 3 characters!</p>
 </div>
 
-<form formGroup="form"
+<form [formGroup]="form"
 (ngSubmit)="onSubmit()">
     <h3>Create Post</h3>
 

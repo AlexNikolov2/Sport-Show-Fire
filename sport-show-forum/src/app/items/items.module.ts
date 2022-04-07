@@ -4,7 +4,8 @@ import { AllPostsComponent } from './all-posts/all-posts.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { CreatePostComponent } from './create-post/create-post.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { ItemsRoutingModule } from './items-routing.module';
 
 
 @NgModule({
@@ -15,7 +16,9 @@ import { CreatePostComponent } from './create-post/create-post.component';
     CreatePostComponent
   ],
   imports: [
-    CommonModule
+    ReactiveFormsModule,
+    CommonModule,
+    ItemsRoutingModule
   ]
 })
 export class ItemsModule { }

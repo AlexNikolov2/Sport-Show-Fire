@@ -1,34 +1,83 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/compat/database';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ActivatedRoute, Router } from '@angular/router';
+import * as firebase from 'firebase/compat';
+import { Observable } from 'rxjs';
 import { Post } from 'src/app/shared/interface/post';
+import { User } from 'src/app/shared/interface/user';
+import { UserService } from '../services/user.service';
+
+type postObservable = Observable<any[]>;
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
-  postsRef: AngularFireList<Post>;
+  posts?: postObservable;
+  postIds?: string[] = [];
 
-  constructor(private db: AngularFireDatabase) {
-    this.postsRef = this.db.list('/posts');
+  constructor(public firestore: AngularFirestore, public router: Router, public route: ActivatedRoute, public database: AngularFireDatabase
+    , public userService: UserService) {
    }
-
-  getPosts() {
-    return this.postsRef;
+  
+  getPosts(): postObservable | undefined {
+    this.posts = this.firestore.collection('Posts').valueChanges();
+ 
+     this.firestore.collection('posts').get({}).subscribe(posts => {
+       posts.docs.map(doc => this.postIds?.push(doc.id));
+     });
+     return this.posts;
   }
 
-  addPost(post: Post) {
-    this.postsRef.push(post);
+  getAllPostIds() {
+    return this.postIds;
   }
 
-  updatePost(post: Post) {
-    this.postsRef.update(post.id!, post);
+  getSinglePost(id: string) {
+    return this.firestore.collection('posts').doc<object>(id).get();
   }
 
-  removePost(post: Post) {
-    this.postsRef.remove(post.id!);
+  createPost(keyword: string, title: string, description: string, image: string) {
+    const post: Post = {
+      keyword: keyword,
+      title: title,
+      description: description,
+      image: image,
+      likes: [],
+      comments: [],
+      userId: this.userService.getUserId(),
+    };
+    let postId = this.firestore.createId();
+    this.firestore.collection('Posts').doc(postId).set(post);
   }
 
-  getPostById(id: string) {
-    return this.db.object('/posts/' + id);
+ update(post: any, postId: string){
+    this.firestore.collection('Posts').doc(postId).set(post);
+  }
+
+  delete(id?: string) {
+    this.firestore.collection('Posts').doc(id).delete().then(() => this.router.navigate([`all-posts`]));
+  };
+
+  //may be implemented in search functionality if I have some time left.
+  getPostByKeyword(keyword: string) {
+    return this.firestore.collection('Posts', ref => ref.where('keyword', '==', keyword)).snapshotChanges();
+  }
+
+  comment(id: string, comment: {comment: string, user: string}) {
+    this.firestore.collection('Posts').doc(id).collection('comments').add(comment);
+  }
+
+  getComments(id: string) {
+    return this.firestore.collection('Posts').doc(id).collection('Comments').snapshotChanges();
+  }
+
+  like(id: string, like: {user: string}) {
+    this.firestore.collection('Posts').doc(id).collection('Likes').add(like);
+  }
+
+  getLikes(id: string) {
+    return this.firestore.collection('Posts').doc(id).collection('Likes').snapshotChanges();
   }
 
 

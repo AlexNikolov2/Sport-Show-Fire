@@ -13,6 +13,7 @@ export class CreatePostComponent implements OnInit {
   constructor(private postService: PostService, public fb: FormBuilder, public router: Router) { }
 
   ngOnInit(): void {
+    this.postService.getPosts();
     this.submitForm();
   }
 
@@ -26,7 +27,12 @@ export class CreatePostComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.form.invalid) {
+    if (this.form.valid) {
+      this.postService.createPost(this.form.controls['keyword'].value, this.form.controls['title'].value, this.form.controls['image'].value, this.form.controls['description'].value);
+      this.form.reset();
+      this.router.navigate(['/all-posts']);
+    }
+    else{
       return;
     }
   }

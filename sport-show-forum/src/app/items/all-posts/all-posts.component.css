@@ -1,3 +1,7 @@
+.intro{
+    text-align: center;
+}
+
 .posts-wrap{
     position: relative;
     width: 100%;
@@ -6,7 +10,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 80px;
 }
 .post{
     border: 4px solid #128d22;
