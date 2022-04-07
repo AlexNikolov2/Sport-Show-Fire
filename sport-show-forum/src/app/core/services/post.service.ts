@@ -1,24 +1,35 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/compat/database';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
-import { ActivatedRoute, Router } from '@angular/router';
-import * as firebase from 'firebase/compat';
-import { Observable } from 'rxjs';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
 import { Post } from 'src/app/shared/interface/post';
-import { User } from 'src/app/shared/interface/user';
-import { UserService } from '../services/user.service';
-
-type postObservable = Observable<any[]>;
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
-  posts?: postObservable;
-  postIds?: string[] = [];
+  postsRef: AngularFireList<Post>;
 
-
-  constructor(public firestore: AngularFirestore, public router: Router, public route: ActivatedRoute, public database: AngularFireDatabase
-    , public userService: UserService) {
+  constructor(private db: AngularFireDatabase) {
+    this.postsRef = this.db.list('/posts');
    }
+
+  getPosts() {
+    return this.postsRef;
+  }
+
+  addPost(post: Post) {
+    this.postsRef.push(post);
+  }
+
+  updatePost(post: Post) {
+    this.postsRef.update(post.id!, post);
+  }
+
+  removePost(post: Post) {
+    this.postsRef.remove(post.id!);
+  }
+
+  getPostById(id: string) {
+    return this.db.object('/posts/' + id);
+  }
+
 
 }
