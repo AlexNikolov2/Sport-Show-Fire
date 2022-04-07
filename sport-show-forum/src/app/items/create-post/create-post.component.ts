@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { PostService } from 'src/app/core/services/post.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { PostService } from 'src/app/core/services/post.service';
 })
 export class CreatePostComponent implements OnInit {
   form!: FormGroup;
-  constructor(private postService: PostService, public fb: FormBuilder) { }
+  constructor(private postService: PostService, public fb: FormBuilder, public router: Router) { }
 
   ngOnInit(): void {
     this.postService.getPosts();

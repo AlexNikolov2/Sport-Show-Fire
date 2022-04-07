@@ -26,6 +26,7 @@ export class PostService {
 
   createPost(post: {keyword: string, title: string, description: string, image: string, user?: string | null}) {
     this.firestore.collection('Posts').add(post);
+    this.router.navigate(['all-posts']);
   }
 
   update(id: string | undefined, changes: {}) {

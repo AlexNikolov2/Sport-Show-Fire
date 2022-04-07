@@ -57,18 +57,15 @@ h3{
 .stats .likes-num{
     margin: 10px;
     font-size: 25px;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 .stats .comments-num{
     margin: 10px;
     font-size: 25px;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 .stats .date-num{
     margin: 15px;
     margin-left: 260px;
     font-size: 15px;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 .comments{
     position: relative;
@@ -184,7 +181,6 @@ h3{
     flex-direction: column;
     align-items: center;
     font-size: 15px;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     border: 4px solid #128d22;
     margin-bottom: 10px;
     padding: 10px;
@@ -213,7 +209,6 @@ h3{
     float: right;
     align-items: center;
     font-size: 15px;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     margin: 15px;
 }
 .btn.btn-primary{
