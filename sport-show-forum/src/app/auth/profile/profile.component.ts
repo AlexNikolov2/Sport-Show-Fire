@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
     this.auth.currentUser.then(user => {
       this.email = user?.email;
     });
-    this.postService.getPosts().subscribe(posts => {
+    this.postService.getPosts()!.subscribe(posts => {
       this.posts = posts;
     });
   }

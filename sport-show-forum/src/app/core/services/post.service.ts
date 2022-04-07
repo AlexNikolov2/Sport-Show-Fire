@@ -22,7 +22,7 @@ export class PostService {
    }
 
   
-   getPosts(): postObservable | undefined {
+  getPosts(): postObservable | undefined {
     this.posts = this.firestore.collection('Posts').valueChanges();
  
      this.firestore.collection('posts').get({}).subscribe(posts => {
