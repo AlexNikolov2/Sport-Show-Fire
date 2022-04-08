@@ -27,6 +27,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
     this.userService.register(this.form.controls['email'].value, this.form.controls['password'].value);
+    this.router.navigate(['/all-posts']);
   }
 
 }

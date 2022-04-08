@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit {
   submitted: boolean = false;
   loginForm!: FormGroup;
 
-  constructor(private userService: UserService, private formbuilder: FormBuilder) { }
+  constructor(private userService: UserService, private formbuilder: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.formbuilder.group({
@@ -20,12 +21,13 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit(): void {
+  onSubmit(){
     this.submitted = true;
     if (this.loginForm.invalid) {
       return;
     }
     this.userService.login(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value);
+    this.router.navigate(['/all-posts']);
   }
 
 }

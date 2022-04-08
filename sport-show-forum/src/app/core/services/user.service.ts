@@ -34,7 +34,7 @@ export class UserService {
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.setUserData(result.user);
-        this.router.navigate(['/']);
+        this.router.navigate(['/all-posts']);
       })
       .catch((error) => {
         window.alert(error.message);
