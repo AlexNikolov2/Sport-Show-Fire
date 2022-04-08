@@ -234,3 +234,9 @@ h3{
     border-color: red;
     color: white;
 }
+
+#add-comment{
+    background-color: #128d22;
+    color: white;
+    border-color: #128d22;
+}
