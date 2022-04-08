@@ -8,7 +8,7 @@ import { AuthGuard } from '../core/guards/auth.guard';
 import { OwnerGuard } from '../core/guards/owner.guard';
 
 const routes: Routes = [
-  { path: 'all-posts', component: AllPostsComponent, canActivate: [AuthGuard], data: { authRequired: false } },
+  { path: 'all-posts', component: AllPostsComponent},
   { path: 'create', component: CreatePostComponent, canActivate: [AuthGuard], data: { authRequired: true } },
   { path: 'edit/:id', component: EditPostComponent, canActivate: [OwnerGuard], data: { authRequired: true } },
   { path: 'details/:id', component: PostDetailsComponent, canActivate: [AuthGuard], data: { authRequired: false } },
