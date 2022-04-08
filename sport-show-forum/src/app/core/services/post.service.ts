@@ -39,6 +39,7 @@ export class PostService {
 
   createPost(keyword: string, title: string, description: string, image: string) {
     const post: Post = {
+      id: '',
       keyword: keyword,
       title: title,
       image: image,
@@ -46,10 +47,10 @@ export class PostService {
       likes: [],
       comments: [],
       userId: this.userService.getUserId(),
-      created_at: Date.now(),
+      created_at: Date.now,
     };
-    let postId = this.firestore.createId();
-    this.firestore.collection('Posts').doc(postId).set(post);
+    post.id = this.firestore.createId();
+    this.firestore.collection('Posts').doc(post.id).set(post);
   }
 
  update(post: any, postId: string){
