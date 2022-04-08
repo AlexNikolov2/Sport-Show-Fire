@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { get } from '@angular/fire/database';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -13,9 +14,9 @@ import { Post } from 'src/app/shared/interface/post';
   styleUrls: ['./post-details.component.css']
 })
 export class PostDetailsComponent implements OnInit {
-  post?: Post;
-  postId?: string;
-  currUser?: string | null;
+  post: any;
+  postId!: string;
+  currUser?: any;
   postLikes = [];
   comments$!: any[];
 
@@ -27,10 +28,15 @@ export class PostDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.postService.getSinglePost(this.route.snapshot.params['id'])
-      .subscribe((data) => {
-        this.post = data.data();
-      })
+    this.postId = this.route.snapshot.params['id'];
+    this.postService.getPostById(this.postId).subscribe((post: any) => {
+      this.post = post;
+      this.postLikes = post.likes;
+      this.comments$ = post.comments;
+    });
+    this.auth.authState.subscribe(user => {
+      this.currUser = user!.uid;
+    });
   }
 
   navigateToPostEdit() {
