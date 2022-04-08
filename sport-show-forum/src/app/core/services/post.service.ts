@@ -37,7 +37,7 @@ export class PostService {
     return this.firestore.collection('posts').doc<object>(id).get();
   }
 
-  createPost(keyword: string, title: string, description: string, image: string) {
+  createPost(keyword: string, title: string, image: string, description: string) {
     const post: Post = {
       id: '',
       keyword: keyword,
