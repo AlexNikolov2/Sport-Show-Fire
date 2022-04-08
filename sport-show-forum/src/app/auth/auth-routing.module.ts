@@ -9,7 +9,7 @@ import { AuthGuard } from '../core/guards/auth.guard';
 const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], data: { authRequired: true } },
   { path: 'login', component: LoginComponent},
-  { path: 'register', component: RegisterComponent, },
+  { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({
