@@ -21,12 +21,13 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onSubmit(){
     this.submitted = true;
     if (this.form.invalid) {
       return;
     }
     this.userService.register(this.form.controls['email'].value, this.form.controls['password'].value);
+    this.form.reset();
     this.router.navigate(['/all-posts']);
   }
 

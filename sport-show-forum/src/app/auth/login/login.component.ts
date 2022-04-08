@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.userService.login(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value);
-    this.router.navigate(['/all-posts']);
+    this.loginForm.reset();
   }
 
 }
