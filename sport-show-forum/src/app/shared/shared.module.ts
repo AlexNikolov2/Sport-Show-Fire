@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TimeDiffPipe } from './pipes/time-diff.pipe';
+
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { NumShortenPipe } from './pipes/num-shorten.pipe';
+import { DateAgoPipe } from './pipes/date-ago.pipe';
 
 
 
 @NgModule({
   declarations: [
-    TimeDiffPipe,
+    DateAgoPipe,
     ShortenPipe,
     NumShortenPipe,
   ],
@@ -16,7 +17,7 @@ import { NumShortenPipe } from './pipes/num-shorten.pipe';
     CommonModule
   ],
   exports: [
-    TimeDiffPipe,
+    DateAgoPipe,
     ShortenPipe,
     NumShortenPipe,
   ]

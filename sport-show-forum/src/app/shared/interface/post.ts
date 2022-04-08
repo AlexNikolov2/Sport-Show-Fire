@@ -5,10 +5,10 @@ export interface Post {
     id?: string;
     keyword?: string;
     title?: string;
-    description?: string;
     image?: string;
+    description?: string;
     userId?: string;
     likes?: string[];
     comments?: Comment[];
-    created_at?: string;
+    created_at?: any;
 }

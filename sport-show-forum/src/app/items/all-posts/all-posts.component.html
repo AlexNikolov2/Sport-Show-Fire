@@ -4,11 +4,11 @@
     </div>
     <div *ngFor="let post of posts | async" class="posts-wrap">    
         <div class="post">
-            <h3>{{post.title | shorten : 10}}</h3>
+            <h3>{{post.title | shorten : 15}}</h3>
             <div class="post-info">
                 <p>{{post.likes.length}} <img src="https://www.iconpacks.net/icons/2/free-heart-icon-3510-thumb.png"></p>
                 <p>{{post.comments.length}} <img src="http://cdn.onlinewebfonts.com/svg/img_420387.png"></p>
-                <p style="font-style: italic;">{{post.created_at | timeDiff}}</p>
+                <p style="font-style: italic;">{{post.created_at | dateAgo}}</p>
                 <a routerLink="/details/post.id" id="details">Details</a>
             </div>
         </div>

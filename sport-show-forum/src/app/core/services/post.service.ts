@@ -41,11 +41,12 @@ export class PostService {
     const post: Post = {
       keyword: keyword,
       title: title,
-      description: description,
       image: image,
+      description: description,
       likes: [],
       comments: [],
       userId: this.userService.getUserId(),
+      created_at: Date.now(),
     };
     let postId = this.firestore.createId();
     this.firestore.collection('Posts').doc(postId).set(post);
