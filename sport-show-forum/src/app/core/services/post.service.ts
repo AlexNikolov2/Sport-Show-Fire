@@ -33,8 +33,8 @@ export class PostService {
     return this.postIds;
   }
 
-  getSinglePost(id: string) {
-    return this.firestore.collection('posts').doc<object>(id).get();
+  getPostById(id: string) {
+    return this.firestore.collection('Posts').doc(id).valueChanges();
   }
 
   createPost(keyword: string, title: string, image: string, description: string) {
