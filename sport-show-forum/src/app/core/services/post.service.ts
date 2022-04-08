@@ -47,7 +47,7 @@ export class PostService {
       likes: [],
       comments: [],
       userId: this.userService.getUserId(),
-      created_at: Date.now,
+      created_at: Date.now(),
     };
     post.id = this.firestore.createId();
     this.firestore.collection('Posts').doc(post.id).set(post);
@@ -58,7 +58,7 @@ export class PostService {
   }
 
   delete(id?: string) {
-    this.firestore.collection('Posts').doc(id).delete().then(() => this.router.navigate([`all-posts`]));
+    this.firestore.collection('Posts').doc(id).delete().then(() => this.router.navigate([`/all-posts`]));
   };
 
   //may be implemented in search functionality if I have some time left.
@@ -81,6 +81,5 @@ export class PostService {
   getLikes(id: string) {
     return this.firestore.collection('Posts').doc(id).collection('Likes').snapshotChanges();
   }
-
 
 }

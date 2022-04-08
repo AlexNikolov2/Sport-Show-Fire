@@ -1,35 +1,32 @@
 <div class="post-wrap">
     <div class="post">
-      <h3>Post title</h3>
+      <h3>{{post?.title}}</h3>
       <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium
-        quaerat accusamus mollitia veniam provident illum ut vitae consectetur
-        magnam voluptatum quibusdam, laborum esse deleniti maiores! Magnam
-        reprehenderit praesentium dolores sit.
+        {{post?.description}}
       </p>
-      <img src="https://i.ytimg.com/vi/aULM7vv8llk/hqdefault.jpg" alt="https://cdn.britannica.com/58/129958-050-C3FE2DD2/Adolf-Hitler-1933.jpg">
+      <img src="{{post?.image}}" alt="">
     </div>
     <div class="stats">
         <div class="likes-num">
-              <p>734636 <img src="https://www.iconpacks.net/icons/2/free-heart-icon-3510-thumb.png"></p>
+              <p>{{post?.likes?.length}} <img src="https://www.iconpacks.net/icons/2/free-heart-icon-3510-thumb.png"></p>
         </div>
         <div class="comments-num">
-              <p>46342 <img src="http://cdn.onlinewebfonts.com/svg/img_420387.png"></p>
+              <p>{{post?.comments?.length}} <img src="https://cdn.onlinewebfonts.com/svg/img_420387.png"></p>
         </div>
           <div class="date-num">
-              <p style="font-style: italic;">Published 6 hours ago</p>
+              <p style="font-style: italic;">{{post?.created_at}}</p>
           </div>
     </div>
     <div class="buttons">
       <button class="btn btn-primary" id="like">Like</button>
-      <button class="btn btn-primary" id="edit">Edit</button>
-      <button class="btn btn-primary" id="delete">Delete</button>
+      <button (click)="navigateToPostEdit()" class="btn btn-primary" id="edit">Edit</button>
+      <button (click)="deletePost()" class="btn btn-primary" id="delete">Delete</button>
     </div>
-    <div class="add-comment">
+    <form class="add-comment">
       <h3>Add Comment</h3>
       <textarea id="form-control" cols="30" rows="10" placeholder="add a comment"></textarea>
       <button class="btn btn-primary" id="add-comment">Add Comment</button>
-    </div>
+    </form>
     <div class="comments">
       <h3>Comments</h3>
         <div class="comment">
