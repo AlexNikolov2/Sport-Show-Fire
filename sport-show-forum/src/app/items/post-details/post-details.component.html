@@ -1,25 +1,24 @@
 <div class="post-wrap">
     <div class="post">
-      <p class="author"><img id="author-img" src="https://www.pngkey.com/png/full/115-1150152_default-profile-picture-avatar-png-green.png">{{post.user}}</p>
-      <h3>{{post.title}}</h3>
+      <h3>{{post!.title}}</h3>
       <p>
-        {{post.description}}
+        {{post!.description}}
       </p>
-      <img src="{{post.image}}" alt="">
+      <img src="{{post!.image}}" alt="">
     </div>
     <div class="stats">
         <div class="likes-num">
-              <p>{{post.likes.length}} <img src="https://www.iconpacks.net/icons/2/free-heart-icon-3510-thumb.png"></p>
+              <p>{{post!.likes.length}} <img src="https://www.iconpacks.net/icons/2/free-heart-icon-3510-thumb.png"></p>
         </div>
         <div class="comments-num">
-              <p>{{post.comments.length}} <img src="https://cdn.onlinewebfonts.com/svg/img_420387.png"></p>
+              <p>{{post!.comments.length}} <img src="https://cdn.onlinewebfonts.com/svg/img_420387.png"></p>
         </div>
           <div class="date-num">
-              <p style="font-style: italic;">{{post.created_at | date: 'MMM d, y, h:mm a'}}</p>
+              <p style="font-style: italic;">{{post!.created_at | date: 'MMM d, y, h:mm a'}}</p>
           </div>
     </div>
     <div *ngIf="userService.isLoggedIn" class="buttons">
-      <button (click)="likePost()" class="btn btn-primary" id="like">Like</button>
+      <button (click)="likePost(postId)" class="btn btn-primary" id="like">Like</button>
       <button *ngIf="post.user == currUser" (click)="navigateToPostEdit()" class="btn btn-primary" id="edit">Edit</button>
       <button *ngIf="post.user == currUser" (click)="deletePost()" class="btn btn-primary" id="delete">Delete</button>
     </div>

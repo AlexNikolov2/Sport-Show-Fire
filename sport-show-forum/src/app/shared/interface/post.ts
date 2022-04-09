@@ -7,7 +7,7 @@ export interface Post {
     title: string;
     image: string;
     description: string;
-    userId: string;
+    userId: string | null;
     likes: string[];
     comments: Comment[];
     created_at: any;

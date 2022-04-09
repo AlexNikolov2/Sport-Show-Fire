@@ -15,8 +15,8 @@ import { Post } from 'src/app/shared/interface/post';
 })
 export class PostDetailsComponent implements OnInit {
   post: any;
-  postId!: string;
-  currUser?: any;
+  postId!: any;
+  currUser?: string | null;
   postLikes = [];
   comments$!: any[];
 
@@ -38,6 +38,8 @@ export class PostDetailsComponent implements OnInit {
     this.auth.authState.subscribe(user => {
       this.currUser = user!.uid;
     });
+
+    this.auth.user.subscribe(user => this.currUser = user?.email)
   }
 
   navigateToPostEdit() {
@@ -50,7 +52,8 @@ export class PostDetailsComponent implements OnInit {
     this.router.navigate(['/all-posts']);
   }
 
-  likePost() {
-    this.postService.like(this.postId, this.currUser);
+  likePost(postId: string) {
+    this.postService.likePost(postId);
   }
+
 }

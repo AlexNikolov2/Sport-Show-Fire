@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/compat/database';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFirestore, CollectionReference } from '@angular/fire/compat/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as firebase from 'firebase/compat';
 import { Observable } from 'rxjs';
 import { Post } from 'src/app/shared/interface/post';
 import { User } from 'src/app/shared/interface/user';
 import { UserService } from '../services/user.service';
+import firestore from 'firebase/compat';
+import { arrayUnion } from '@angular/fire/firestore';
 
 type postObservable = Observable<any[]>;
 @Injectable({
@@ -75,12 +77,9 @@ export class PostService {
     return this.firestore.collection('Posts').doc(id).collection('Comments').snapshotChanges();
   }
 
-  like(id: string, like: {user: string}) {
-    this.firestore.collection('Posts').doc(id).collection('Likes').add(like);
+  likePost(id: string) {
+    this.firestore.collection('Posts').doc(id).update({
+      likes: arrayUnion(this.userService.getUserId())
+    });
   }
-
-  getLikes(id: string) {
-    return this.firestore.collection('Posts').doc(id).collection('Likes').snapshotChanges();
-  }
-
 }
