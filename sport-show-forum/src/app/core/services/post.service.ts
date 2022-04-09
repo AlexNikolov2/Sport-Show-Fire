@@ -48,6 +48,7 @@ export class PostService {
       comments: [],
       userId: this.userService.getUserId(),
       created_at: Date.now(),
+      user: this.userService.getUserEmail()
     };
     post.id = this.firestore.createId();
     this.firestore.collection('Posts').doc(post.id).set(post);

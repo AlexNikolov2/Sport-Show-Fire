@@ -82,4 +82,8 @@ export class UserService {
   getUserId() {
     return this.userData.uid;
   }
+
+  getUserEmail() {
+    return this.userData.email;
+  }
 }
