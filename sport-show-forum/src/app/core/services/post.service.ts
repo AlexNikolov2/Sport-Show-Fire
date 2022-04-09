@@ -9,6 +9,7 @@ import { User } from 'src/app/shared/interface/user';
 import { UserService } from '../services/user.service';
 import firestore from 'firebase/compat';
 import { arrayUnion } from '@angular/fire/firestore';
+import {Comment} from '../../shared/interface/comment';
 
 type postObservable = Observable<any[]>;
 @Injectable({
@@ -69,15 +70,23 @@ export class PostService {
     return this.firestore.collection('Posts', ref => ref.where('keyword', '==', keyword)).snapshotChanges();
   }
 
-  comment(id: string, comment: {comment: string, user: string, created_at: Date}) {
-    this.firestore.collection('Posts').doc(id).update({
-      comments: arrayUnion(comment)
-  });
-  }
-
   likePost(id: string) {
     this.firestore.collection('Posts').doc(id).update({
       likes: arrayUnion(this.userService.getUserId())
+    });
+  }
+
+  commentPost(id: string, content: string) {
+    const comment: Comment = {
+      id: '',
+      content: content,
+      userId: this.userService.getUserId(),
+      created_at: Date.now(),
+      user: this.userService.getUserEmail()
+    };
+    comment.id = this.firestore.createId();
+    this.firestore.collection('Posts').doc(id).update({
+      comments: arrayUnion(comment)
     });
   }
 }

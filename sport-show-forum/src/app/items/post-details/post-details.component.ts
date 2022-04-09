@@ -62,7 +62,8 @@ export class PostDetailsComponent implements OnInit {
   }
 
   commentPost(postId: string) {
-    this.postService.comment(postId, this.commentForm.controls['content'].value);
+    this.postService.commentPost(postId, this.commentForm.controls['content'].value);
+    this.commentForm.reset()
   }
 
 }
