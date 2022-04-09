@@ -1,6 +1,8 @@
+@import url('https://use.fontawesome.com/releases/v6.1.1/css/all.css');
+
 .profile-wrap{
     position: relative;
-    left: 540px;
+    left: 500px;
     top: 100px;
     width: 400px;
     height: 100%;
@@ -13,12 +15,10 @@
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     margin: 15px 15px 165px 15px;
 }
-.profile-wrap img{
+.profile-wrap i{
     position: relative;
     top: -75px;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
+    color: #128d22;
 }
 .profile-info{
     position: relative;
