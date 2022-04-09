@@ -4,7 +4,9 @@
     align-items: center;
     text-align: center;
 }
-
+.wrap{
+    margin-bottom: 200px;
+}
 .intro h2{
     position: relative;
     top: 15px;
