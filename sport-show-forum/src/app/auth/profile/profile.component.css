@@ -48,18 +48,18 @@
 }
 .post-info{
     position: relative;
-    top: -55px;
+    top: -45px;
     display: flex;
     flex-direction: row;
     float: right;
 }
-.post-info img{
+.post-info i{
     position: static;
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
 }
 .post-info p{
     margin: 10px;
-    font-size: small;
+    font-size: 15px;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
