@@ -2,9 +2,9 @@
 
 .profile-wrap{
     position: relative;
-    left: 500px;
+    left: 450px;
     top: 100px;
-    width: 400px;
+    width: 500px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -33,7 +33,7 @@
 .posts-wrap{
     position: relative;
     top: -75px;
-    width: 100%;
+    width: 400px;
     height: 100%;
     display: flex;
     flex-direction: column;

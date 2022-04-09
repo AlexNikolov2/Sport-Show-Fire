@@ -14,7 +14,7 @@ import { User } from 'src/app/shared/interface/user';
 })
 export class ProfileComponent implements OnInit {
   email?: any;
-  posts: any;
+  posts: Post[] = [];
   id: any
 
   constructor(public auth: AngularFireAuth, public firestore: AngularFirestore, public postService: PostService) { }
@@ -23,10 +23,6 @@ export class ProfileComponent implements OnInit {
     this.auth.currentUser.then(user => {
       this.email = user?.email;
     });
-    this.getPostsByProfile();
-  }
-
-  getPostsByProfile(){
-    this.postService.getPostsByProfile();
+    this.postService.getPosts()?.subscribe(post => this.posts = post.filter(x => x.user === this.email));
   }
 }
