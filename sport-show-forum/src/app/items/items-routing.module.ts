@@ -5,12 +5,14 @@ import { AllPostsComponent } from './all-posts/all-posts.component';
 import { EditPostComponent } from './edit-post/edit-post.component'
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { AuthGuard } from '../core/guards/auth.guard';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   { path: 'all-posts', component: AllPostsComponent},
   { path: 'create', component: CreatePostComponent, canActivate: [AuthGuard], data: { authRequired: true } },
   { path: 'edit/:id', component: EditPostComponent, canActivate: [AuthGuard], data: { authRequired: true } },
   { path: 'details/:id', component: PostDetailsComponent},
+  { path: 'search', component: SearchComponent}
 ];
 @NgModule({
   imports: [
