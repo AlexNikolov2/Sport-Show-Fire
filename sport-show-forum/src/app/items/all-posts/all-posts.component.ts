@@ -9,14 +9,14 @@ import { Post } from 'src/app/shared/interface/post';
   styleUrls: ['./all-posts.component.css']
 })
 export class AllPostsComponent implements OnInit {
-  posts: Observable<any[]> | undefined;
+  posts: any;
 
   constructor(public router: Router, public postService: PostService) { }
 
   ngOnInit(): void {
     this.getPosts();
   }
-  
+
   getPosts() {
     this.posts = this.postService.getPosts();
   }
