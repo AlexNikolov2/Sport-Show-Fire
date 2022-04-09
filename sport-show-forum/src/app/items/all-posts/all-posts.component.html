@@ -6,8 +6,8 @@
         <div class="post">
             <h3 >{{post.title | shorten : 15}} </h3>
             <div class="post-info">
-                <p>0 <i class="fa-solid fa-heart"></i></p>
-                <p>0 <i class="fa-solid fa-comment"></i></p>
+                <p>{{post.likes.length}} <i class="fa-solid fa-heart"></i></p>
+                <p>{{post.comments.length}} <i class="fa-solid fa-comment"></i></p>
                 <p style="font-style: italic;">{{post.created_at | date: 'MMM d, y, h:mm a'}}</p>
                 <a routerLink="/details/{{post.id}}" id="details">Details</a>
             </div>
