@@ -21,7 +21,7 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     ItemsRoutingModule,
     SharedModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class ItemsModule { }
