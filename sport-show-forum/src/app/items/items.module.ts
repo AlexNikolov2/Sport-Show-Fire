@@ -7,7 +7,6 @@ import { CreatePostComponent } from './create-post/create-post.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ItemsRoutingModule } from './items-routing.module';
 import { SharedModule } from '../shared/shared.module';
-import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
@@ -16,7 +15,6 @@ import { SearchComponent } from './search/search.component';
     PostDetailsComponent,
     EditPostComponent,
     CreatePostComponent,
-    SearchComponent
   ],
   imports: [
     ReactiveFormsModule,
