@@ -7,7 +7,7 @@ form{
   justify-content: center;
   align-items: center;
   margin: auto;
-  width: 20%;
+  width: 30%;
   border: 3px solid #128d22;
   border-radius: 10px;
   backdrop-filter: blur(10px);
@@ -43,18 +43,6 @@ label{
   border-radius: 10px;
   margin: 15px;
 }
-/*label[for="password"]{
-  left: -60px;
-}
-input[type="password"]{
-  position: relative;
-  left: -40px;
-  width: 100%;
-  padding: 10px;
-  margin: 5px;
-  border-radius: 10px;
-  border: 1px solid #128d22;
-}*/
 input{
   display: block;
   position: relative;
@@ -93,4 +81,24 @@ button{
   border-radius: 10px;
   font-family: "Helvetica Neue", Helvetica, Arial;
   border: 3px solid red;
+}
+.login{
+  color: #128d22;
+  padding: 10px;
+  margin: 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial;
+}
+.login a{
+  position: relative;
+  top: 15px;
+  color: white;
+  background-color: #128d22;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  font-family: "Helvetica Neue", Helvetica, Arial;
 }
