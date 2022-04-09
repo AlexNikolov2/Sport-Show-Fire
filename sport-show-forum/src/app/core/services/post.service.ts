@@ -89,4 +89,8 @@ export class PostService {
       comments: arrayUnion(comment)
     });
   }
+
+  getPostsByProfile(){
+    return this.firestore.collection('Posts', ref => ref.where('userId', '==', this.userService.getUserId())).snapshotChanges();
+  }
 }

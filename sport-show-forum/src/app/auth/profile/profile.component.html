@@ -3,16 +3,18 @@
     <div class="profile-info">
         <h3>{{this.email}}</h3>
     </div>
-    <div></div>
+    <div *ngIf="posts"></div>
+    <div *ngFor="let post of posts">
         <div class="posts-wrap">
             <div class="post">
-                <h3>Hitlero</h3>
+                <h3>{{post.title}}</h3>
                 <div class="post-info">
-                    <p>70 <i class="fa-solid fa-heart fa-1x"></i></p>
-                    <p> 100 <i class="fa-solid fa-comment fa-1x"></i></p>
+                    <p>{{post.likes}} <i class="fa-solid fa-heart fa-1x"></i></p>
+                    <p>{{post.comments}} <i class="fa-solid fa-comment fa-1x"></i></p>
                 </div>
             </div>
         </div>
+    </div>
     <div *ngIf="posts == null" class="posts-none">
         <h3>No posts yet</h3>
     </div>

@@ -79,7 +79,7 @@ export class UserService {
     });
   }
 
-  getUserId() {
+  getUserId(): any {
     return this.userData.uid;
   }
 
