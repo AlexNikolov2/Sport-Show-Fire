@@ -24,7 +24,8 @@ export class PostDetailsComponent implements OnInit {
     public postService: PostService,
     public route: ActivatedRoute, 
     public router: Router, 
-    public auth: AngularFireAuth
+    public auth: AngularFireAuth,
+    public userService: UserService
   ) { }
 
   ngOnInit() {
@@ -47,5 +48,9 @@ export class PostDetailsComponent implements OnInit {
     alert('Are you sure you want to delete this post?')
     this.postService.delete(this.postId);
     this.router.navigate(['/all-posts']);
+  }
+
+  likePost() {
+    this.postService.like(this.postId, this.currUser);
   }
 }

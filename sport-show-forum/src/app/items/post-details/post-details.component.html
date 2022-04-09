@@ -8,19 +8,19 @@
     </div>
     <div class="stats">
         <div class="likes-num">
-              <p>0 <img src="https://www.iconpacks.net/icons/2/free-heart-icon-3510-thumb.png"></p>
+              <p>{{post.likes.length}} <img src="https://www.iconpacks.net/icons/2/free-heart-icon-3510-thumb.png"></p>
         </div>
         <div class="comments-num">
-              <p>0 <img src="https://cdn.onlinewebfonts.com/svg/img_420387.png"></p>
+              <p>{{post.comments.length}} <img src="https://cdn.onlinewebfonts.com/svg/img_420387.png"></p>
         </div>
           <div class="date-num">
               <p style="font-style: italic;">{{post.created_at | date: 'MMM d, y, h:mm a'}}</p>
           </div>
     </div>
-    <div class="buttons">
-      <button class="btn btn-primary" id="like">Like</button>
-      <button (click)="navigateToPostEdit()" class="btn btn-primary" id="edit">Edit</button>
-      <button (click)="deletePost()" class="btn btn-primary" id="delete">Delete</button>
+    <div *ngIf="userService.isLoggedIn" class="buttons">
+      <button (click)="likePost()" class="btn btn-primary" id="like">Like</button>
+      <button *ngIf="post.user == currUser" (click)="navigateToPostEdit()" class="btn btn-primary" id="edit">Edit</button>
+      <button *ngIf="post.user == currUser" (click)="deletePost()" class="btn btn-primary" id="delete">Delete</button>
     </div>
     <form class="add-comment">
       <h3>Add Comment</h3>
