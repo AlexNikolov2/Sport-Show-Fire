@@ -89,4 +89,8 @@ export class PostService {
       comments: arrayUnion(comment)
     });
   }
+
+  searchPosts(keyword: string) {
+    return this.firestore.collection('Posts', ref => ref.where('keyword', '==', keyword)).snapshotChanges();
+  }
 }
