@@ -27,18 +27,21 @@
       <textarea id="form-control" cols="30" rows="10" placeholder="add a comment"></textarea>
       <button class="btn btn-primary" id="add-comment">Add Comment</button>
     </form>
-    <div *ngIf="post.comments.length != 0" class="comments">
+    <!--*ngIf="post.comments.length != 0"
+    
+    *ngFor="let comment of post.comments"-->
+    <div  class="comments">
       <h3>Comments</h3>
-      <div *ngFor="let comment of post.comments" class="comment">
+      <div  class="comment">
         <div class="comment">
           <div class="comment-header">
             <div class="comment-user">
-              <img src="https://cdn.britannica.com/58/129958-050-C3FE2DD2/Adolf-Hitler-1933.jpg">
+              <i class="fa-solid fa-circle-user fa-1x"></i>
               <p>User name</p>
             </div>
             <div class="info">
               <div class="comment-date">
-                  <p>Published 6 hours ago</p>
+                  <p>Apr 10 21:45Pm</p>
                 </div>
             </div>
           </div>
