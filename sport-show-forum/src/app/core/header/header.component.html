@@ -2,6 +2,7 @@
     <h1>Sport & Show Forum</h1>
     <nav>
         <ul>
+            <li><a routerLink="/search"><i class="fa-solid fa-magnifying-glass"></i></a></li>
             <!--if user--><li><a *ngIf="userService.isLoggedIn" (click)="userService.logout()">Logout</a></li>
             <li><a *ngIf="!userService.isLoggedIn" routerLink="/login">Login</a></li>
             <li><a *ngIf="!userService.isLoggedIn" routerLink="/register">Register</a></li>

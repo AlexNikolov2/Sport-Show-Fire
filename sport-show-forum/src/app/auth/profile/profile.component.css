@@ -4,7 +4,7 @@
     position: relative;
     left: 450px;
     top: 100px;
-    width: 500px;
+    width: 600px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -33,7 +33,7 @@
 .posts-wrap{
     position: relative;
     top: -75px;
-    width: 400px;
+    width: 500px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -62,4 +62,22 @@
     margin: 10px;
     font-size: 15px;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.post-info a{
+    background-color: #128d22;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: bolder;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    margin: 5px;
+    margin-left: 40px;
+}
+.post-info a:hover{
+    font-weight: bolder;
+    background-color: #fff;
+    color: #128d22;
 }
