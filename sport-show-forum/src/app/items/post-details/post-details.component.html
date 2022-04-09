@@ -27,8 +27,9 @@
       <textarea id="form-control" cols="30" rows="10" placeholder="add a comment"></textarea>
       <button class="btn btn-primary" id="add-comment">Add Comment</button>
     </form>
-    <div class="comments">
+    <div *ngIf="post.comments.length != 0" class="comments">
       <h3>Comments</h3>
+      <div *ngFor="let comment of post.comments" class="comment">
         <div class="comment">
           <div class="comment-header">
             <div class="comment-user">
@@ -95,9 +96,10 @@
             maiores! Magnam reprehenderit praesentium dolores sit.
           </p>
         </div>
-        <div class="no-comments">
-          <p>No comments yet!</p>
-        </div>
+      </div>
+    </div>
+    <div *ngIf="post.comments.length == 0" class="no-comments">
+      <p>No comments yet!</p>
     </div>
   </div>
   
