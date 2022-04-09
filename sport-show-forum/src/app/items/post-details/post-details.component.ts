@@ -19,6 +19,7 @@ export class PostDetailsComponent implements OnInit {
   currUser?: string | null;
   postLikes = [];
   comments$!: any[];
+  commentForm!: FormGroup;
 
   constructor(
     public postService: PostService,
@@ -40,6 +41,10 @@ export class PostDetailsComponent implements OnInit {
     });
 
     this.auth.user.subscribe(user => this.currUser = user?.email)
+
+    this.commentForm = new FormBuilder().group({
+      content: ['', []]
+    });
   }
 
   navigateToPostEdit() {
@@ -54,6 +59,10 @@ export class PostDetailsComponent implements OnInit {
 
   likePost(postId: string) {
     this.postService.likePost(postId);
+  }
+
+  commentPost(postId: string) {
+    this.postService.comment(postId, this.commentForm.controls['content'].value);
   }
 
 }

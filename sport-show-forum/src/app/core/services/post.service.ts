@@ -69,12 +69,10 @@ export class PostService {
     return this.firestore.collection('Posts', ref => ref.where('keyword', '==', keyword)).snapshotChanges();
   }
 
-  comment(id: string, comment: {comment: string, user: string}) {
-    this.firestore.collection('Posts').doc(id).collection('comments').add(comment);
-  }
-
-  getComments(id: string) {
-    return this.firestore.collection('Posts').doc(id).collection('Comments').snapshotChanges();
+  comment(id: string, comment: {comment: string, user: string, created_at: Date}) {
+    this.firestore.collection('Posts').doc(id).update({
+      comments: arrayUnion(comment)
+  });
   }
 
   likePost(id: string) {
