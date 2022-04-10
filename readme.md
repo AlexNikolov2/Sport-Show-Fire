@@ -4,6 +4,5 @@
 
 ___
 
-
-![Alt text](/img/forumfc.png "Optional title")
+<img src="/img/forumfc.png">
 
