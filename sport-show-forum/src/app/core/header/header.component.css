@@ -42,7 +42,7 @@ a{
   font-family: Arial, Helvetica, sans-serif;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 400px) {
   header {
     position: relative;
     display: flex;
