@@ -1,3 +1,9 @@
 # Sport & Show Forum #
 
-A wonderful little forum, where you can curse someone's mother without getting banned!
+**Your place to discuss sports!**
+
+___
+
+
+![Alt text](/img/forumfc.png "Optional title")
+
