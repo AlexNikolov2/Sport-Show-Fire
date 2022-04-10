@@ -3,6 +3,7 @@
 **Your place to discuss sports!**
 
 ___
-
-<img src="/img/forumfc.png">
+<center>
+<img src="/img/forumfc.png" width="100%">
+<center>
 
