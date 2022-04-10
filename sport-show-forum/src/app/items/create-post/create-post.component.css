@@ -99,3 +99,43 @@ button{
     font-family: "Helvetica Neue", Helvetica, Arial;
     border: 3px solid red;
   }
+
+  @media screen and (max-width: 426px) {
+    form{
+        display: flex;
+        position: relative;
+        left: 0px;
+        top: 75px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        margin-bottom: 300px;
+        width: 100%;
+        border: 3px solid #128d22;
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+    }
+    label[for="image"]{
+        position: relative;
+        width: 200px;
+        left: -40px;
+    }
+    #image{
+        position: relative;
+        width: 200px;
+        left: -30px;
+    }
+    label[for="description"]{
+        display: block;
+        position: relative;
+        left: -10px;
+        width: 200px;
+    }
+    textarea{
+        position: relative;
+        width: 200px;
+        resize: none;
+        left: 10px;
+    }
+}
