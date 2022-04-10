@@ -1,4 +1,4 @@
-<div *ngIf="(form.invalid)" class="me">
+<div *ngIf="(submitted && form.invalid)" class="me">
     <p *ngIf="form.get('keyword')!.errors?.['required']">Keyword is required!</p>
     <p *ngIf="form.get('keyword')!.errors?.['minlength']">Keyword must be at least 3 characters!</p>
     <p *ngIf="form.get('title')!.errors?.['required']">Title is required!</p>

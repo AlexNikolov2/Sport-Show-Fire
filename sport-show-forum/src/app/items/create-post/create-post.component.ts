@@ -10,14 +10,11 @@ import { PostService } from 'src/app/core/services/post.service';
 })
 export class CreatePostComponent implements OnInit {
   form!: FormGroup;
+  submitted: boolean = false;
   constructor(private postService: PostService, public fb: FormBuilder, public router: Router) { }
 
   ngOnInit(): void {
     this.postService.getPosts();
-    this.submitForm();
-  }
-
-  submitForm() {
     this.form = this.fb.group({
       keyword: ['', [Validators.required, Validators.minLength(3)]],
       title: ['', [Validators.required, Validators.minLength(3)]],
@@ -26,15 +23,18 @@ export class CreatePostComponent implements OnInit {
     });
   }
 
+  /*submitForm() {
+    
+  }*/
+
   onSubmit() {
-    if (this.form.valid) {
+    this.submitted = true;
+    if(this.form.invalid){
+      return;
+    }
       this.postService.createPost(this.form.controls['keyword'].value, this.form.controls['title'].value, this.form.controls['image'].value, this.form.controls['description'].value);
       this.form.reset();
       this.router.navigate(['/all-posts']);
-    }
-    else{
-      return;
-    }
   }
 
 
