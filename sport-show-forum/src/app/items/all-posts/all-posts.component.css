@@ -120,3 +120,7 @@ p[style="font-style: italic;"]{
     background-color: #fff;
     color: #128d22;
 }
+
+@media screen and (max-width: 425px){
+    
+}
