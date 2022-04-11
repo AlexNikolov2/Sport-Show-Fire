@@ -102,3 +102,20 @@ button{
   border-radius: 10px;
   font-family: "Helvetica Neue", Helvetica, Arial;
 }
+
+@media screen and (max-width: 426px) {
+  form{
+    display: flex;
+    position: relative;
+    left: -1px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 100%;
+    border: 3px solid #128d22;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    overflow: visible;
+  }
+}

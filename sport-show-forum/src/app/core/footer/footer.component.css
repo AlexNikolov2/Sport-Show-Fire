@@ -18,9 +18,9 @@ h3{
 
 @media screen and (max-width: 426px) {
     footer {
-        position: relative;
+        position:fixed;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         padding: 20px;
         width: 100%;
         margin: -10px;
@@ -28,5 +28,8 @@ h3{
         background-color: #128c22;
         padding-bottom: 10px;
         padding-right: 200px;
+    }
+    h3{
+        width: 50%;
     }
 }
