@@ -22,7 +22,7 @@
       <button *ngIf="post.user == currUser" (click)="navigateToPostEdit()" class="btn btn-primary" id="edit">Edit</button>
       <button *ngIf="post.user == currUser" (click)="deletePost()" class="btn btn-primary" id="delete">Delete</button>
     </div>
-    <form [formGroup]="commentForm" (ngSubmit)="commentPost(postId)" class="add-comment">
+    <form *ngIf="userService.isLoggedIn" [formGroup]="commentForm" (ngSubmit)="commentPost(postId)" class="add-comment">
       <h3>Add Comment</h3>
       <textarea formControlName="content" id="form-control" cols="30" rows="10" placeholder="add a comment"></textarea>
       <button class="btn btn-primary" id="add-comment">Add Comment</button>
