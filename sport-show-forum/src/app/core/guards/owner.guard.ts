@@ -24,7 +24,7 @@ export class OwnerGuard implements CanActivate {
           if (post.user == res?.email) {
             return true;
           } else {
-            this.router.navigate([`/details/${id}`]);
+            this.router.navigate(['/']);
             return false;
           }
         });
