@@ -10,7 +10,7 @@ ___
 
 **Build with:**
 
-<img src="/img/icons8-angularjs-100.png"><img src="/img/icons8-firebase-100.png"><img src="/img/icons8-typescript-100.png"><img src="/img/icons8-html5-100.png"><img src="/img/icons8-css3-100.png"><img src="/img/icons8-font-awesome-100.png">
+<img src="/img/icons8-angularjs-100.png"><img src="/img/icons8-firebase-100.png"><img src="/img/icons8-typescript-100.png"><img src="/img/icons8-html-5-100.png"><img src="/img/icons8-css3-100.png"><img src="/img/icons8-font-awesome-100.png">
 ___
 
 Functionalities:
