@@ -10,7 +10,9 @@ ___
 
 **Build with:**
 
-<img >
+<img src="/img/icons8-angularjs-100.png">
+<img src="/img/icons8-firebase-100.png">
+<img src="/img/icons8-typescript-100.png">
 ___
 <h3>These days <b>freedom</b> of speech is getting more and more repressed.</h3>
 You can't say anything without receiving a blame from the society.
