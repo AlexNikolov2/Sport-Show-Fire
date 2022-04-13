@@ -16,7 +16,7 @@ ___
 Functionalities:
 
 Functionality  | Visitor | User | Owner
-------------- | ------------- |
+------------- | ------------- | ------------- |
 View all posts   | Yes | Yes | Yes
 View post details  | Yes | Yes | Yes
 Like post    | No | Yes | Yes
