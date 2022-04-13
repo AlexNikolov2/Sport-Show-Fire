@@ -7,7 +7,7 @@
     <div *ngFor="let post of posts">
         <div class="posts-wrap">
             <div class="post">
-                <h3>{{post.title | shorten : 10}}</h3>
+                <h3>{{post.title | shorten : 8}}</h3>
                 <div class="post-info">
                     <p>{{post.likes.length}} <i class="fa-solid fa-heart fa-1x"></i></p>
                     <p>{{post.comments.length}} <i class="fa-solid fa-comment fa-1x"></i></p>
