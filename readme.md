@@ -15,6 +15,17 @@ ___
 
 Functionalities:
 
+Functionality  | Visitor | User | Owner
+------------- | ------------- |
+View all posts   | Yes | Yes | Yes
+View post details  | Yes | Yes | Yes
+Like post    | No | Yes | Yes
+Comment post      | No | Yes | Yes
+Edit post   | No | No | Yes
+Delete post         | No | No | Yes
+Create post    | No | Yes | Yes
+View profile | No | No | Yes
+
 ___
 
 <h3>These days <b>freedom</b> of speech is getting more and more repressed.</h3>
