@@ -8,7 +8,7 @@ ___
 <center>
 ___
 
-<center>**Build with:**</center>
+**Build with:**
 
 <img src="/img/icons8-angularjs-100.png"><img src="/img/icons8-firebase-100.png"><img src="/img/icons8-typescript-100.png">
 ___
@@ -21,7 +21,7 @@ ___
 
 If you want to discuss sports freely
 
-# Sport & Show Forum # is your place!
+# Sport & Show Forum is your place! #
 
 Here:
 
