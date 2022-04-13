@@ -10,13 +10,15 @@ ___
 
 **Build with:**
 
-
+<img >
 ___
 <h3>These days <b>freedom</b> of speech is getting more and more repressed.</h3>
 You can't say anything without receiving a blame from the society.
 The once free Facebook, Instagram and other social networks are now under strict rules and guidance, with the goal of further indoctrinating the society.
 The sport world is losing the most because of that.
+
 ___
+
 If you want to discuss sports freely
 
 # Sport & Show Forum # is your place!
