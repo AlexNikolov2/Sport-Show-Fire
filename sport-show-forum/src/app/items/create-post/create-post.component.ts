@@ -18,15 +18,10 @@ export class CreatePostComponent implements OnInit {
     this.form = this.fb.group({
       keyword: ['', [Validators.required, Validators.minLength(3)]],
       title: ['', [Validators.required, Validators.minLength(3)]],
-      image: ['', [Validators.required]],
+      image: [''],
       description: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
-
-  /*submitForm() {
-    
-  }*/
-
   onSubmit() {
     this.submitted = true;
     if(this.form.invalid){
