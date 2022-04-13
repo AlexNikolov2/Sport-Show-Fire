@@ -8,7 +8,7 @@ ___
 <center>
 ___
 
-**Build with:**
+<center>**Build with:**</center>
 
 <img src="/img/icons8-angularjs-100.png"><img src="/img/icons8-firebase-100.png"><img src="/img/icons8-typescript-100.png">
 ___
