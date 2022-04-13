@@ -12,6 +12,11 @@ ___
 
 <img src="/img/icons8-angularjs-100.png"><img src="/img/icons8-firebase-100.png"><img src="/img/icons8-typescript-100.png">
 ___
+
+Functionalities:
+
+___
+
 <h3>These days <b>freedom</b> of speech is getting more and more repressed.</h3>
 You can't say anything without receiving a blame from the society.
 The once free Facebook, Instagram and other social networks are now under strict rules and guidance, with the goal of further indoctrinating the society.
