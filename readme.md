@@ -13,7 +13,7 @@ ___
 <img src="/img/icons8-angularjs-100.png"><img src="/img/icons8-firebase-100.png"><img src="/img/icons8-typescript-100.png"><img src="/img/icons8-html-5-100.png"><img src="/img/icons8-css3-100.png"><img src="/img/icons8-font-awesome-100.png">
 ___
 
-Functionalities:
+**Functionalities:**
 
 Functionality  | Visitor | User | Owner
 -------------  | ------------- | ------------- | ------------- |
@@ -25,6 +25,15 @@ Edit post   | No | No | Yes
 Delete post         | No | No | Yes
 Create post    | No | Yes | Yes
 View profile | No | No | Yes
+
+___
+
+**Features**
+
+* - Responsive design for small mobile devices
+* - Angular 13
+* - Firebase for backend service
+* - Deployed in real environment
 
 ___
 
