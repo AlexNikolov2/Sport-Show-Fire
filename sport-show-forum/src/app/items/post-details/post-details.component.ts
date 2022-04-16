@@ -65,5 +65,5 @@ export class PostDetailsComponent implements OnInit {
     this.postService.commentPost(postId, this.commentForm.controls['content'].value);
     this.commentForm.reset()
   }
-
+  
 }
