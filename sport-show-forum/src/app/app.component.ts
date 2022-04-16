@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { initializeApp } from "firebase/app";
 import { Post } from './shared/interface/post';
 
 @Component({
