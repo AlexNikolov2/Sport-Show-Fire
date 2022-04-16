@@ -90,7 +90,9 @@ export class PostService {
     });
   }
 
-  searchPosts(keyword: string) {
-    return this.firestore.collection('Posts', ref => ref.where('keyword', '==', keyword)).snapshotChanges();
+  sortByDate(posts: any[]) {
+    posts.sort((a, b) => {
+      return b.created_at - a.created_at;
+    });
   }
 }
