@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { PostService } from 'src/app/core/services/post.service';
-import { Post } from 'src/app/shared/interface/post';
 @Component({
   selector: 'app-all-posts',
   templateUrl: './all-posts.component.html',
@@ -11,14 +10,19 @@ import { Post } from 'src/app/shared/interface/post';
 export class AllPostsComponent implements OnInit {
   posts: any;
 
-  constructor(public router: Router, public postService: PostService) { }
+  constructor(public router: Router, public postService: PostService, 
+    public firestore: AngularFirestore) { }
 
   ngOnInit(): void {
     this.getPosts();
+    this.sortByDate();
   }
 
   getPosts() {
     this.posts = this.postService.getPosts();
   }
 
+  sortByDate() {
+    this.posts = this.postService.sortByDate(this.posts);
+  }
 }

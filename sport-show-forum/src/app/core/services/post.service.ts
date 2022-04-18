@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/compat/database';
-import { AngularFirestore, CollectionReference } from '@angular/fire/compat/firestore';
+import { AngularFireDatabase} from '@angular/fire/compat/database';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
-import * as firebase from 'firebase/compat';
 import { Observable } from 'rxjs';
 import { Post } from 'src/app/shared/interface/post';
-import { User } from 'src/app/shared/interface/user';
 import { UserService } from '../services/user.service';
-import firestore from 'firebase/compat';
 import { arrayUnion } from '@angular/fire/firestore';
 import {Comment} from '../../shared/interface/comment';
 
@@ -65,11 +62,6 @@ export class PostService {
     this.firestore.collection('Posts').doc(id).delete().then(() => this.router.navigate([`/all-posts`]));
   };
 
-  //may be implemented in search functionality if I have some time left.
-  getPostByKeyword(keyword: string) {
-    return this.firestore.collection('Posts', ref => ref.where('keyword', '==', keyword)).snapshotChanges();
-  }
-
   likePost(id: string) {
     this.firestore.collection('Posts').doc(id).update({
       likes: arrayUnion(this.userService.getUserId())
@@ -90,7 +82,9 @@ export class PostService {
     });
   }
 
-  searchPosts(keyword: string) {
-    return this.firestore.collection('Posts', ref => ref.where('keyword', '==', keyword)).snapshotChanges();
+  sortByDate(posts: any) {
+    posts.sort((a: { created_at: number; }, b: { created_at: number; }) => {
+      return b.created_at - a.created_at;
+    });
   }
 }
