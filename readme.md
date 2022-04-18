@@ -69,11 +69,7 @@ actually make use of this forum by turning it into a place to freely discuss spo
     
  # Results: #
     
- Project was graded with 6.00/6.00 by the jury during my project defense. As sole and main problem was exposed the lack of complete error handling(it does nothing after entering an invalid route).
-    
-    Here's my certificate: https://softuni.bg/certificates/details/132093/b1ffb80d
-
-    
-    []: # Language: markdown
-    []: # Path: readme.md
+ Project was graded with 6.00/6.00 by the jury during my project defense. As sole and main problem was exposed the lack of complete error handling(it does nothing after entering an invalid route).   
+ 
+Here's my certificate: https://softuni.bg/certificates/details/132093/b1ffb80d
 
