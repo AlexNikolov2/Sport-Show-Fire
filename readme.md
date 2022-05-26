@@ -30,10 +30,10 @@ ___
 
 **Features**
 
-* - Responsive design for small mobile devices
-* - Angular 13
-* - Firebase for backend service
-* - Deployed in real environment
+* Responsive design for small mobile devices
+* Angular 13
+* Firebase for backend service
+* Deployed in real environment
 
 ___
 
