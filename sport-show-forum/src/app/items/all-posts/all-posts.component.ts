@@ -15,14 +15,10 @@ export class AllPostsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPosts();
-    this.sortByDate();
   }
 
   getPosts() {
     this.posts = this.postService.getPosts();
   }
 
-  sortByDate() {
-    this.posts = this.postService.sortByDate(this.posts);
-  }
 }
