@@ -15,6 +15,9 @@ h3{
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
 }
+ul{
+    display: none;
+}
 
 @media screen and (max-width: 426px) {
     footer {
@@ -30,6 +33,18 @@ h3{
         padding-right: 200px;
     }
     h3{
-        width: 50%;
+        display:none;
+    }
+    ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        list-style: none;
+        gap: 30px;
+        padding: 0;
+    }
+    #special{
+        font-size: 44px;
     }
 }
