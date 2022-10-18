@@ -47,4 +47,7 @@ ul{
     #special{
         font-size: 44px;
     }
+    i{
+        color: white;
+    }
 }
