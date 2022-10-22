@@ -2,7 +2,7 @@
   <h2>Recent posts</h2>
 </div>
 <div *ngIf="posts.length !== 0" class="wrap">
-  <div *ngFor="let post of posts | async" class="post">
+  <div *ngFor="let post of posts | async" class="post shadow-diffuse">
     <h3>{{ post.title | shorten: 10 }}</h3>
     <div class="post-info">
       <p>
@@ -10,9 +10,13 @@
         <i class="fa-regular fa-heart"></i>
       </p>
       <p>{{ post.comments.length }} <i class="fa-regular fa-comment"></i></p>
+    </div>
+    <div class="created-at">
       <p style="font-style: italic">
         {{ post.created_at | date: "MMM d, y, h:mm a" }}
       </p>
+    </div>
+    <div class="button">
       <a routerLink="/details/{{ post.id }}" id="details">Details</a>
     </div>
   </div>
