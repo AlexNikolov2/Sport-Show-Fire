@@ -1,27 +1,24 @@
+<div class="intro">
+  <h2>Recent posts</h2>
+</div>
 <div *ngIf="posts.length !== 0" class="wrap">
-  <div  *ngFor="let post of posts | async"class="posts-wrap">
-    <div class="intro">
-      <h2>Recent posts</h2>
-    </div>
-    <div class="post">
-      <h3>{{post.title | shorten : 10}}</h3>
-      <div class="post-info">
-        <p>
-          {{post.likes.length}}
-          <img
-            src="https://www.iconpacks.net/icons/2/free-heart-icon-3510-thumb.png"
-          />
-        </p>
-        <p>{{post.comments.length}} <img src="http://cdn.onlinewebfonts.com/svg/img_420387.png" /></p>
-        <p style="font-style: italic">{{post.created_at | date: 'MMM d, y, h:mm a'}}</p>
-        <a routerLink="/details/{{post.id}}" id="details">Details</a>
-      </div>
+  <div *ngFor="let post of posts | async" class="post">
+    <h3>{{ post.title | shorten: 10 }}</h3>
+    <div class="post-info">
+      <p>
+        {{ post.likes.length }}
+        <i class="fa-regular fa-heart"></i>
+      </p>
+      <p>{{ post.comments.length }} <i class="fa-regular fa-comment"></i></p>
+      <p style="font-style: italic">
+        {{ post.created_at | date: "MMM d, y, h:mm a" }}
+      </p>
+      <a routerLink="/details/{{ post.id }}" id="details">Details</a>
     </div>
   </div>
-
 </div>
 
 <div *ngIf="posts.length == 0" class="posts-none">
-    <h3>No posts yet</h3>
-    <p>Be the first to post!</p>
-  </div>
+  <h3>No posts yet</h3>
+  <p>Be the first to post!</p>
+</div>
