@@ -29,13 +29,13 @@ export class PostService {
      return this.posts;
   }
 
-  getNoImgPosts(posts: any) {
+  /*getNoImgPosts(posts: any) {
     posts = this.firestore.collection('Posts', ref => ref.where('image', '==',  "")).valueChanges();
  
     console.log(posts);
     
     return posts;
-  }
+  }*/
 
   getAllPostIds() {
     return this.postIds;

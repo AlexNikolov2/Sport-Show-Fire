@@ -14,15 +14,15 @@ export class AllPostsComponent implements OnInit {
     public firestore: AngularFirestore) { }
 
   ngOnInit(): void {
-    this.getNoImgPosts();
+    this.getPosts();
   }
 
   getPosts() {
     this.posts = this.postService.getPosts();
   }
 
-  getNoImgPosts(){
+  /*getNoImgPosts(){
     this.posts = this.postService.getNoImgPosts(this.posts);
-  }
+  }*/
 
 }
