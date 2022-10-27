@@ -1,7 +1,7 @@
 <div *ngIf="(submitted && form.invalid)" class="me">
     <p *ngIf="form.get('title')!.errors?.['required']">Title is required!</p>
     <p *ngIf="form.get('title')!.errors?.['minlength']">Title must be at least 3 characters!</p>
-    <p *ngIf="form.get('image')!.errors?.['required']">Title is required!</p>
+    <p *ngIf="form.get('image')!.errors?.['required']">Image is required!</p>
     <p *ngIf="form.get('image')!.errors?.['pattern']">Image is Invalid!</p>
     <p *ngIf="form.get('description')!.errors?.['required']">Description is required!</p>
     <p *ngIf="form.get('description')!.errors?.['minlength']">Description must be at least 3 characters!</p>
