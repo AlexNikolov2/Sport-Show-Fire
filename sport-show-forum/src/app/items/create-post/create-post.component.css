@@ -1,141 +1,77 @@
-form{
-    display: flex;
-    position: relative;
-    left: 200px;
-    top: 75px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    width: 40%;
-    border: 3px solid #128d22;
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
 }
-h3{
-    background-color: #128d22;
-    color: white;
-    width: 100%;
-    text-align: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-left: 1px;
-    padding-right: 1px;
-    margin-right: 1px;
-    margin-top: -1px;
-    border-radius: 7px 7px 0px 0px;
-    font-family: "Helvetica Neue",Helvetica,Arial;
-    font-weight: bolder;
-    font-size: 30px;
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0px 0px 9px 1px #919191;
+  gap: 10px;
+  width: 70%;
+  padding: 15px;
 }
-label{
-    display: block;
-    position: relative;
-    left: -70px;
-    font-family: "Helvetica Neue",Helvetica,Arial;
-    font-weight: bolder;
-    font-size: 20px;
-    background-color: #128d22;
-    color: white;
-    padding: 8px;
-    border-radius: 10px;
-    margin: 15px;
+.group-a {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-input{
-        position: relative;
-        font-family: "Helvetica Neue",Helvetica,Arial;
-        font-size: 15px;
-        padding: 10px;
-        margin: 5px;
-        height: 20px;
-        border-radius: 10px;
-        border: 1px solid #128d22;
+.image-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-around;
 }
-input:focus {
-    border: 3px solid #555;
-  }
+.description-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
-label[for="description"]{
-    display: block;
-    position: relative;
-    left: -10px;
-    width: 410px;
+label {
+  background-color: green;
+  color: white;
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 8px;
 }
-#image{
-    position: relative;
-    left: 0px;
-    width: 400px;
+
+input,
+textarea {
+  border: 2px solid green;
+  border-radius: 8px;
+  padding: 3px 2px;
 }
-label[for="image"]{
-    position: relative;
-    width: 400px;
-    left: -10px;
+input:focus,
+textarea:focus {
+  border: 4px solid green;
 }
-textarea{
-    position: relative;
-    width: 400px;
-    resize: none;
-    left: 10px;
+
+h3 {
+  text-align: center;
+  font-size: 33px;
+}
+
+.button-submit{
+    display: flex;
+    justify-content: center;
 }
 button{
-    background-color: #128d22;
+    background-color: green;
     border: none;
+    border-radius: 8px;
     color: white;
-    padding: 6px 12px;
-    text-decoration: none;
-    margin: 14px 12px;
-    cursor: pointer;
-    font-family: "Helvetica Neue",Helvetica,Arial;
-    font-weight: bolder;
-    font-size: 20px;
-    border-radius: 10px;
-  }
-  .me {
-    position: absolute;
-    background-color: rgb(250, 103, 103);
-    color: white;
-    padding: 10px;
-    border-radius: 10px;
-    font-family: "Helvetica Neue", Helvetica, Arial;
-    border: 3px solid red;
-  }
+    font-weight: bold;
+    font-size: 17px;
+    padding: 6px 19px;
+}
 
-  @media screen and (max-width: 426px) {
-    form{
-        display: flex;
-        position: relative;
-        left: 0px;
-        top: 75px;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin: auto;
-        margin-bottom: 300px;
-        width: 100%;
-        border: 3px solid #128d22;
-        border-radius: 10px;
-        backdrop-filter: blur(10px);
-    }
-    label[for="image"]{
-        position: relative;
-        width: 200px;
-        left: -40px;
-    }
-    #image{
-        position: relative;
-        width: 200px;
-        left: -30px;
-    }
-    label[for="description"]{
-        display: block;
-        position: relative;
-        left: -10px;
-        width: 200px;
-    }
-    textarea{
-        position: relative;
-        width: 200px;
-        resize: none;
-        left: 10px;
-    }
+@media screen and (min-width: 768px) {
+  form {
+    width: 500px;
+  }
 }

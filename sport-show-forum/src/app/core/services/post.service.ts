@@ -45,10 +45,9 @@ export class PostService {
     return this.firestore.collection('Posts').doc(id).valueChanges();
   }
 
-  createPost(keyword: string, title: string, image: string, description: string) {
+  createPost(title: string, image: string, description: string) {
     const post: Post = {
       id: '',
-      keyword: keyword,
       title: title,
       image: image,
       description: description,
