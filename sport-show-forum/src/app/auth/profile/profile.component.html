@@ -1,25 +1,33 @@
-<div class="profile-wrap">
+<div class="wrapper">
+  <div class="profile-wrap">
     <i class="fa-solid fa-circle-user fa-8x"></i>
     <div class="profile-info">
-        <h3>{{this.email}}</h3>
+      <h3>{{ this.email }}</h3>
     </div>
     <div *ngIf="posts">
-    <div *ngFor="let post of posts">
+      <div *ngFor="let post of posts">
         <div class="posts-wrap">
-            <div class="post">
-                <h3>{{post.title | shorten : 8}}</h3>
-                <div class="post-info">
-                    <p>{{post.likes.length}} <i class="fa-solid fa-heart fa-1x"></i></p>
-                    <p>{{post.comments.length}} <i class="fa-solid fa-comment fa-1x"></i></p>
-                    <p style="font-style: italic;">{{post.created_at | date: 'MMM d, h:mm a'}}</p>
-                    <a routerLink="/details/{{post.id}}" id="details">Details</a>
-                </div>
+          <div class="post">
+            <h3>{{ post.title | shorten: 8 }}</h3>
+            <div class="post-info">
+              <p>
+                {{ post.likes.length }} <i class="fa-solid fa-heart fa-1x"></i>
+              </p>
+              <p>
+                {{ post.comments.length }}
+                <i class="fa-solid fa-comment fa-1x"></i>
+              </p>
+              <p style="font-style: italic">
+                {{ post.created_at | date: "MMM d, h:mm a" }}
+              </p>
+              <a routerLink="/details/{{ post.id }}" id="details">Details</a>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
     <div *ngIf="posts.length == 0" class="posts-none">
-        <h3>No posts yet</h3>
+      <h3>No posts yet</h3>
     </div>
-    
+  </div>
 </div>
