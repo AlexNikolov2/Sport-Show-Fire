@@ -1,22 +1,52 @@
+<div *ngIf="(submitted && editForm.invalid)" class="me">
+    <p *ngIf="editForm.get('title')!.errors?.['required']">Title is required!</p>
+    <p *ngIf="editForm.get('title')!.errors?.['minlength']">Title must be at least 3 characters!</p>
+    <p *ngIf="editForm.get('image')!.errors?.['required']">Image is required!</p>
+    <p *ngIf="editForm.get('image')!.errors?.['pattern']">Image is Invalid!</p>
+    <p *ngIf="editForm.get('description')!.errors?.['required']">Description is required!</p>
+    <p *ngIf="editForm.get('description')!.errors?.['minlength']">Description must be at least 3 characters!</p>
+</div>
 
 
-<form [formGroup]="editForm"
-(ngSubmit)="onSubmit()">
+<div class="form">
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
     <h3>Edit Post</h3>
 
     <div class="group-a">
-        <input formControlName="keyword" type="text" class="form-control" id="keyword" aria-describedby="keywordHelp" placeholder="Keyword" (value)="post.keyword">
-        <input formControlName="title" type="text" class="form-control" id="title" aria-describedby="titleHelp" placeholder="Title" (value)="post.title">
+    <label for="title">Title</label>
+      <input
+        formControlName="title"
+        type="text"
+        class="form-control"
+        id="title"
+        aria-describedby="titleHelp"
+        placeholder="Title"
+        (value)="(post.title)"
+      />
     </div>
     <div class="image-form">
-        <label for="image">Image</label>
-        <input formControlName="image" type="text" class="form-control" id="image" placeholder="Image" (value)="post.image">
+      <label for="image">Image</label>
+      <input
+        formControlName="image"
+        type="text"
+        class="form-control"
+        id="image"
+        placeholder="Image"
+        (value)="(post.image)"
+      />
     </div>
     <div class="description-form">
-        <label for="description">Description</label>
-        <textarea formControlName="description" class="form-control" id="description" rows="5" (value)="post.description"></textarea>
+      <label for="description">Description</label>
+      <textarea
+        formControlName="description"
+        class="form-control"
+        id="description"
+        rows="5"
+        (value)="(post.description)"
+      ></textarea>
     </div>
     <div class="button-submit">
-        <button type="submit" class="btn btn-primary">Edit Post</button>
+      <button type="submit" class="btn btn-primary">Edit Post</button>
     </div>
-</form>
+  </form>
+</div>

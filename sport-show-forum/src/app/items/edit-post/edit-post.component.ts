@@ -14,6 +14,7 @@ export class EditPostComponent implements OnInit {
   editForm: FormGroup;
   post: any;
   editLink!: string;
+  submitted: boolean = false;
 
   constructor(
     public firestore: AngularFirestore,
@@ -24,7 +25,6 @@ export class EditPostComponent implements OnInit {
     ) { 
 
     this.editForm = this.fb.group({
-      keyword: ['', [Validators.required, Validators.minLength(3)]],
     title: ['', [Validators.required, Validators.minLength(3)]],
     image: ['', [Validators.required]],
     description: ['', [Validators.required, Validators.minLength(3)]],
@@ -35,7 +35,6 @@ export class EditPostComponent implements OnInit {
     this.postService.getPostById(this.route.snapshot.params['id']).subscribe((post: any) => {
         this.post = post;
         this.editLink = "/edit/" + this.route.snapshot.params['id'];
-        this.editForm.controls['keyword'].setValue(post.keyword);
         this.editForm.controls['title'].setValue(post.title);
         this.editForm.controls['image'].setValue(post.image);
         this.editForm.controls['description'].setValue(post.description);
@@ -43,8 +42,9 @@ export class EditPostComponent implements OnInit {
   }
 
   onSubmit() {
+    this.submitted = true;
     if (this.editForm.valid) {
-      const postObject = {...this.post, ...{keyword: this.editForm.controls['keyword'].value, title: this.editForm.controls['title'].value, description: this.editForm.controls['description'].value,
+      const postObject = {...this.post, ...{ title: this.editForm.controls['title'].value, description: this.editForm.controls['description'].value,
         image:this.editForm.controls['image'].value}};
       this.postService.update(postObject, this.route.snapshot.params['id']);
       this.editForm.reset();
